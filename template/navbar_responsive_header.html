@@ -1,0 +1,110 @@
+<div class="dropdown-container hidden inventea-mobile-dropdown-menu">
+    <a href="#" class="dropdown-trigger inventea-toggle"><i class="icon fa-bars fa-fw"></i></a>
+    <div class="dropdown hidden">
+        <div class="pointer"><div class="pointer-inner"></div></div>
+        <ul class="dropdown-contents" role="menubar">
+		
+							<!-- IF U_SITE_HOME -->
+							<li>
+								<a href="{U_SITE_HOME}" role="menuitem">
+									<i class="icon fa fa-fw fa-home" aria-hidden="true"></i><span>{L_SITE_HOME}</span>
+								</a>
+							</li>
+							<!-- ENDIF -->
+							
+							<li>
+								<a href="{U_INDEX}" role="menuitem">
+									<i class="icon fa fa-fw <!-- IF U_SITE_HOME -->fa-globe<!-- ELSE -->fa-home<!-- ENDIF -->" aria-hidden="true"></i><span>{L_INDEX}</span>
+								</a>
+							</li>		
+							<!-- EVENT overall_header_navigation_prepend -->
+
+							<li <!-- IF not S_USER_LOGGED_IN -->data-skip-responsive="true"<!-- ELSE -->data-last-responsive="true"<!-- ENDIF -->>
+								<a href="{U_FAQ}" rel="help" title="{L_FAQ_EXPLAIN}" role="menuitem">
+									<i class="icon fa-question-circle fa-fw" aria-hidden="true"></i><span>{L_FAQ}</span>
+								</a>
+							</li>
+							<!-- EVENT navbar_header_quick_links_before -->
+
+						<!-- IF S_DISPLAY_SEARCH -->
+							<li>
+								<a href="{U_SEARCH}" role="menuitem">
+									<i class="icon fa-search fa-fw" aria-hidden="true"></i><span>{L_SEARCH}</span>
+								</a>
+							</li>
+							
+							<!-- IF S_REGISTERED_USER -->
+							<li>
+								<a href="{U_SEARCH_SELF}" role="menuitem">
+									<i class="icon fa-file-o fa-fw icon-gray" aria-hidden="true"></i><span>{L_SEARCH_SELF}</span>
+								</a>
+							</li>
+							<!-- ENDIF -->
+							
+							<!-- IF S_USER_LOGGED_IN -->
+							<li>
+								<a href="{U_SEARCH_NEW}" role="menuitem">
+									<i class="icon fa-file-o fa-fw icon-red" aria-hidden="true"></i><span>{L_SEARCH_NEW}</span>
+								</a>
+							</li>
+							<!-- ENDIF -->
+							
+							<!-- IF S_LOAD_UNREADS -->
+							<li>
+								<a href="{U_SEARCH_UNREAD}" role="menuitem">
+									<i class="icon fa-file-o fa-fw icon-red" aria-hidden="true"></i><span>{L_SEARCH_UNREAD}</span>
+								</a>
+							</li>
+							<!-- ENDIF -->	
+						
+							<li>
+								<a href="{U_SEARCH_UNANSWERED}" role="menuitem">
+									<i class="icon fa-file-o fa-fw icon-gray" aria-hidden="true"></i><span>{L_SEARCH_UNANSWERED}</span>
+								</a>
+							</li>
+							<li>
+								<a href="{U_SEARCH_ACTIVE_TOPICS}" role="menuitem">
+									<i class="icon fa-file-o fa-fw icon-blue" aria-hidden="true"></i><span>{L_SEARCH_ACTIVE_TOPICS}</span>
+								</a>
+							</li>
+							<li class="separator"></li>
+	
+						<!-- ENDIF -->
+
+							<!-- EVENT navbar_header_quick_links_after -->
+
+            <!-- IF not S_IS_BOT -->
+						<!-- IF S_DISPLAY_MEMBERLIST -->
+							<li>
+								<a href="{U_MEMBERLIST}" role="menuitem">
+									<i class="icon fa-group fa-fw" aria-hidden="true"></i><span>{L_MEMBERLIST}</span>
+								</a>
+							</li>
+						<!-- ENDIF -->
+						<!-- IF U_TEAM -->
+							<li>
+								<a href="{U_TEAM}" role="menuitem">
+									<i class="icon fa-shield fa-fw" aria-hidden="true"></i><span>{L_THE_TEAM}</span>
+								</a>
+							</li>
+						<!-- ENDIF -->
+            <!-- ENDIF -->
+
+		<!-- IF U_ACP -->
+			<li data-last-responsive="true">
+				<a href="{U_ACP}" title="{L_ACP}" role="menuitem">
+					<i class="icon fa-cogs fa-fw" aria-hidden="true"></i><span>{L_ACP_SHORT}</span>
+				</a>
+			</li>
+		<!-- ENDIF -->
+		<!-- IF U_MCP -->
+			<li data-last-responsive="true">
+				<a href="{U_MCP}" title="{L_MCP}" role="menuitem">
+					<i class="icon fa-gavel fa-fw" aria-hidden="true"></i><span>{L_MCP_SHORT}</span>
+				</a>
+			</li>
+		<!-- ENDIF -->
+            <!-- EVENT overall_header_navigation_append -->
+        </ul>
+    </div>
+</div>

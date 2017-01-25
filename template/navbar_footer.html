@@ -1,0 +1,43 @@
+<nav role="navigation">
+	<ul id="nav-footer" class="nav-footer linklist" role="menubar">
+		<li class="breadcrumbs">
+			<!-- IF U_SITE_HOME -->
+				{% spaceless %}
+				<span class="crumb">
+					<a href="{U_SITE_HOME}" data-navbar-reference="home">
+						<span>{L_SITE_HOME}</span>
+					</a>
+				</span>
+				{% endspaceless %}
+			<!-- ENDIF -->
+			<!-- EVENT overall_footer_breadcrumb_prepend -->
+			{% spaceless %}
+			<span class="crumb">
+				<a href="{U_INDEX}" data-navbar-reference="index">
+					<span>{L_INDEX}</span>
+				</a>
+			</span>
+			{% endspaceless %}
+			<!-- EVENT overall_footer_breadcrumb_append -->
+		</li>
+
+		<!-- IF U_WATCH_FORUM_LINK and not S_IS_BOT -->
+			<li data-last-responsive="true">
+				<a href="{U_WATCH_FORUM_LINK}" title="{S_WATCH_FORUM_TITLE}" data-ajax="toggle_link" data-toggle-class="icon <!-- IF S_WATCHING_FORUM -->fa-check-square-o<!-- ELSE -->fa-square-o<!-- ENDIF --> fa-fw" data-toggle-text="{S_WATCH_FORUM_TOGGLE}" data-toggle-url="{U_WATCH_FORUM_TOGGLE}">
+					<span>{S_WATCH_FORUM_TITLE}</span>
+				</a>
+			</li>
+		<!-- ENDIF -->
+		<!-- IF U_ACP --><li class="small-icon" data-last-responsive="true"><a href="{U_ACP}" title="{L_ACP}" role="menuitem">{L_ACP_SHORT}</a></li><!-- ENDIF -->
+		<!-- IF U_CONTACT_US --><li class="small-icon" data-last-responsive="true"><a href="{U_CONTACT_US}" role="menuitem">{L_CONTACT_US}</a></li><!-- ENDIF -->
+
+		<!-- EVENT overall_footer_teamlink_before -->
+		<!-- EVENT overall_footer_teamlink_after -->
+
+		<!-- IF not S_IS_BOT --><li class="small-icon"><a href="{U_DELETE_COOKIES}" data-ajax="true" data-refresh="true" role="menuitem">{L_DELETE_COOKIES}</a></li><!-- ENDIF -->
+
+		<!-- EVENT overall_footer_timezone_before -->
+		<li>{S_TIMEZONE}</li>
+		<!-- EVENT overall_footer_timezone_after -->
+	</ul>
+</nav>
