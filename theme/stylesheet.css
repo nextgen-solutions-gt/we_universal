@@ -1,0 +1,15 @@
+/*  phpBB3 Style Sheet
+    --------------------------------------------------------------
+	Style name:			we_universal
+	Based on style:		prosilver (the default phpBB 3.1.x style)
+	Original author:	Tom Beddard ( http://www.subblue.com/ )
+	Modified by:		phpBB Limited ( https://www.phpbb.com/ )
+	Modified by:		INVENTEA ( https://inventea.com/ )
+    --------------------------------------------------------------
+*/
+
+@import url("font-awesome.min.css");
+@import url("common.css");
+@import url("content.css");
+@import url("cp.css");
+@import url("forms.css");
