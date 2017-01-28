@@ -178,18 +178,6 @@ ul.linklist.inventea-user-menu > li + li {
 	padding-left: 3px;
 }
 
-/* Menu items icons */
-.inventea-user-menu > li > a:before {
-	float: left;
-	margin-right: 6px;
-	color: #6b6b6b;
-	font-family: FontAwesome;
-	font-size: 16px;
-}
-
-.inventea-user-menu > .icon-logout > a:before 		{ content: "\f090"; }
-.inventea-user-menu > .icon-register > a:before 	{ content: "\f234"; }
-
 /* Small avatar near username */
 a.header-avatar,
 a.header-avatar:hover {
@@ -323,12 +311,22 @@ li.breadcrumbs span:first-child > a {
 
 /* Responsive menu hamburger link */
 ul.linklist li.responsive-menu {
-	position: relative;
-	margin: 0 5px 0 0;
+	margin: 0 2px;
 }
 
-ul.linklist.bulletin > li.small-icon:before {
-	display: none !important;
+ul.linklist li.responsive-menu a.responsive-menu-link {
+	margin: 0 1px;
+	line-height: 18px;
+}
+
+ul.linklist li.responsive-menu a.responsive-menu-link:before {
+	top: 5px;
+	border-color: #525252;
+}
+
+ul.linklist li.responsive-menu a.responsive-menu-link:hover:before,
+ul.linklist li.responsive-menu.visible a.responsive-menu-link:before {
+	border-color: #bc2a4d;
 }
 
 /* Remove links icons */

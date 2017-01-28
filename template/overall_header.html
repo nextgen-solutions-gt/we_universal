@@ -98,14 +98,14 @@
 					<li id="username_logged_in" class="rightside <!-- IF CURRENT_USER_AVATAR --> no-bulletin<!-- ENDIF -->" data-skip-responsive="true">
 						<!-- EVENT navbar_header_username_prepend -->
 						<div class="header-profile dropdown-container">
-							<a href="{U_PROFILE}" class="header-avatar dropdown-trigger"><!-- IF CURRENT_USER_AVATAR -->{CURRENT_USER_AVATAR} <!-- ENDIF --> {CURRENT_USERNAME_SIMPLE}</a>
+							<a href="{U_PROFILE}" class="header-avatar dropdown-trigger"><!-- IF CURRENT_USER_AVATAR -->{CURRENT_USER_AVATAR}<!-- ELSE --><img src="{T_THEME_PATH}/images/no_avatar.gif" alt="" /><!-- ENDIF --> {CURRENT_USERNAME_SIMPLE}</a>
 							<div class="dropdown">
 								<div class="pointer"><div class="pointer-inner"></div></div>
 								<ul class="dropdown-contents" role="menu">
 								<!-- IF U_RESTORE_PERMISSIONS -->
 									<li>
 										<a href="{U_RESTORE_PERMISSIONS}">
-										<i class="icon fa-refresh fa-fw" aria-hidden="true"></i><span>{L_RESTORE_PERMISSIONS}</span>
+											<i class="icon fa-refresh fa-fw" aria-hidden="true"></i><span>{L_RESTORE_PERMISSIONS}</span>
 										</a>
 									</li>
 								<!-- ENDIF -->
@@ -114,12 +114,12 @@
 
 									<li>
 										<a href="{U_PROFILE}" title="{L_PROFILE}" role="menuitem">
-										<i class="icon fa-sliders fa-fw" aria-hidden="true"></i><span>{L_PROFILE}</span>
+											<i class="icon fa-sliders fa-fw" aria-hidden="true"></i><span>{L_PROFILE}</span>
 										</a>
 									</li>
 									<li>
 										<a href="{U_USER_PROFILE}" title="{L_READ_PROFILE}" role="menuitem">
-										<i class="icon fa-user fa-fw" aria-hidden="true"></i><span>{L_READ_PROFILE}</span>
+											<i class="icon fa-user fa-fw" aria-hidden="true"></i><span>{L_READ_PROFILE}</span>
 										</a>
 									</li>
 
@@ -128,36 +128,44 @@
 									<li class="separator"></li>
 									<li>
 										<a href="{U_LOGIN_LOGOUT}" title="{L_LOGIN_LOGOUT}" accesskey="x" role="menuitem">
-										<i class="icon fa-power-off fa-fw" aria-hidden="true"></i><span>{L_LOGIN_LOGOUT}</span>
+											<i class="icon fa-power-off fa-fw" aria-hidden="true"></i><span>{L_LOGIN_LOGOUT}</span>
 										</a>
 									</li>
 								</ul>
 							</div>
 						</div>
+						
 						<!-- EVENT navbar_header_username_append -->
+						
 					</li>
+					
 					<!-- IF S_DISPLAY_PM -->
 						<li class="small-icon rightside" data-skip-responsive="true">
 							<a href="{U_PRIVATEMSGS}" role="menuitem">
-							<i class="icon fa-inbox fa-fw" aria-hidden="true"></i><span>{L_PRIVATE_MESSAGES} </span><strong class="badge<!-- IF not PRIVATE_MESSAGE_COUNT --> hidden<!-- ENDIF -->">{PRIVATE_MESSAGE_COUNT}</strong>
+								<i class="icon fa-inbox fa-fw" aria-hidden="true"></i><span>{L_PRIVATE_MESSAGES} </span><strong class="badge<!-- IF not PRIVATE_MESSAGE_COUNT --> hidden<!-- ENDIF -->">{PRIVATE_MESSAGE_COUNT}</strong>
 							</a>
 						</li>	
 					<!-- ENDIF -->
+					
 					<!-- IF S_NOTIFICATIONS_DISPLAY -->
-						<li class="small-icon dropdown-container dropdown-{S_CONTENT_FLOW_END} rightside" data-skip-responsive="true">
+						<li class="small-icon dropdown-container dropdown-{S_CONTENT_FLOW_END} rightside" data-last-responsive="true">
 							<a href="{U_VIEW_ALL_NOTIFICATIONS}" id="notification_list_button" class="dropdown-trigger">
-							<i class="icon fa-bell fa-fw" aria-hidden="true"></i><span>{L_NOTIFICATIONS} </span><strong class="badge<!-- IF not NOTIFICATIONS_COUNT --> hidden<!-- ENDIF -->">{NOTIFICATIONS_COUNT}</strong>
+								<i class="icon fa-bell fa-fw" aria-hidden="true"></i><span>{L_NOTIFICATIONS} </span><strong class="badge<!-- IF not NOTIFICATIONS_COUNT --> hidden<!-- ENDIF -->">{NOTIFICATIONS_COUNT}</strong>
 						</a>
 							<!-- INCLUDE notification_dropdown.html -->
 						</li>
 					<!-- ENDIF -->
+					
 					<!-- EVENT navbar_header_user_profile_append -->
+					
 				<!-- ELSE -->
-					<li class="small-icon icon-logout rightside" data-skip-responsive="true"><a href="{U_LOGIN_LOGOUT}" title="{L_LOGIN_LOGOUT}" accesskey="x" role="menuitem">{L_LOGIN_LOGOUT}</a></li>
+						<li class="small-icon rightside" data-skip-responsive="true"><a href="{U_LOGIN_LOGOUT}" title="{L_LOGIN_LOGOUT}" accesskey="x" role="menuitem"><i class="icon fa-fw fa-sign-in" aria-hidden="true"></i>{L_LOGIN_LOGOUT}</a></li>
 					<!-- IF S_REGISTER_ENABLED and not (S_SHOW_COPPA or S_REGISTRATION) -->
-						<li class="small-icon icon-register rightside" data-skip-responsive="true"><a href="{U_REGISTER}" role="menuitem">{L_REGISTER}</a></li>
+						<li class="small-icon rightside" data-skip-responsive="true"><a href="{U_REGISTER}" role="menuitem"><i class="icon fa-fw fa-user-plus" aria-hidden="true"></i>{L_REGISTER}</a></li>
 					<!-- ENDIF -->
+					
 					<!-- EVENT navbar_header_logged_out_content -->
+					
 				<!-- ENDIF -->
 			</ul>
 		</nav>
