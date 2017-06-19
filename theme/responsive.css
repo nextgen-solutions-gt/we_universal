@@ -279,4 +279,12 @@ input.tiny {
 		margin: 3px 0 24px;
 		text-align: center;
 	}
+
+    #pm-disp {
+        font-size: 0;
+    }
+
+    #notif-disp {
+        font-size: 0;
+    }
 }
