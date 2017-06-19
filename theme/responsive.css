@@ -166,7 +166,10 @@ ul.topiclist dd.redirect {
 
 .postprofile,
 .search .postprofile,
-.pm .postprofile,
+.pm .postprofile {
+	display: none;
+}
+
 .post .postbody {
 	display: block;
 	overflow: hidden;
