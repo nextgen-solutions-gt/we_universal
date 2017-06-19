@@ -72,7 +72,7 @@ a:hover, a:focus {	color: #bc2a4d;	}
 .inventea-footer {
 	box-sizing: border-box;
 	width: 95%;
-	max-width: 1170px;
+	max-width: none;
 	margin: auto;
 }
 
@@ -254,7 +254,7 @@ a.header-avatar span:after {
  */
 #nav-breadcrumbs {
 	margin-top: 3px;
-	margin-bottom: 24px;
+	margin-bottom: 3px;
 	border: 0;
 }
 
