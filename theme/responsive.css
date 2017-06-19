@@ -1,13 +1,21 @@
 /**
  * Common tags
  */
-html,
-body {
-	background: #fff;
+
+@media only screen and (max-width: 1000px), only screen and (max-device-width: 1000px) {
+.inventea-dashboard {
+    width: 100%;
+    height: 180px;
+	background-size: 125% 100%;
+}
 }
 
 @media only screen and (max-width: 700px), only screen and (max-device-width: 700px) {
 
+html,
+body {
+	background: #fff;
+}
 /**
  * Structure
  */
@@ -16,7 +24,6 @@ body {
 }
 
 .inventea-wrapper,
-.inventea-dashboard,
 .inventea-footer {
 	width: 100%;
 	border: 0;
@@ -279,4 +286,12 @@ input.tiny {
 		margin: 3px 0 24px;
 		text-align: center;
 	}
+
+    #pm-disp {
+        font-size: 0;
+    }
+
+    #notif-disp {
+        font-size: 0;
+    }
 }
