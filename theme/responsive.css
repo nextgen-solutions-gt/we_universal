@@ -71,10 +71,13 @@ body {
 	margin-right: 50px !important;
 }
 
-.inventea-posts-menu,
-.inventea-forum-menu {
-	display: none;
-}
+    .inventea-menu li > a {
+        max-width: 125px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        padding: 4px 2px;
+    }
 
 .inventea-mobile-dropdown-menu {
 	position: absolute;
@@ -294,5 +297,19 @@ input.tiny {
 
     #notif-disp {
         font-size: 0;
+    }
+
+    .inventea-menu li > a {
+        max-width: 75px;
+    }
+}
+
+@media only screen and (max-width: 360px){
+    h1 {
+        font-size: 30px;
+    }
+
+    .inventea-menu li > a {
+        max-width: 55px;
     }
 }
