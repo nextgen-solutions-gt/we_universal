@@ -281,6 +281,10 @@ input.tiny {
 }
 
 @media only screen and (max-width: 550px) {
+	.inventea-wrapper {
+	    padding: 5px 5px;
+    	}
+
 	ul.topiclist.forums dd.lastpost {
 		display: none;
 	}
