@@ -71,13 +71,19 @@ body {
 	margin-right: 50px !important;
 }
 
-    .inventea-menu li > a {
+ .inventea-menu li > a {
         max-width: 125px;
         text-overflow: ellipsis;
         overflow: hidden;
         white-space: nowrap;
         padding: 4px 2px;
     }
+	
+.inventea-menu li > a:hover{
+    overflow: visible; 
+    white-space: normal; 
+}
+
 
 .inventea-mobile-dropdown-menu {
 	position: absolute;
