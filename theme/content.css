@@ -193,8 +193,9 @@ ul.topiclist.topics li.row dt {
 
 /* Topic icon */
 .forumbg ul.topiclist li.row dt img {
-	margin-top: 20px;
-	margin-right: -20px;
+	margin-top: 15px;
+	margin-left: -20px;
+	max-width: 20px;
 }
 
 a.lastsubject {
