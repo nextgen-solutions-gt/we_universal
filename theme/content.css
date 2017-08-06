@@ -295,6 +295,11 @@ table.table1 td {
 	background-color: #f4f4f4;
 }
 
+/* give new notifications a distinctive background colour */
+.notification_list .bg2 {
+	background-color: #f8e4e4;
+}
+
 .content {
 	color: #525252;
 }
