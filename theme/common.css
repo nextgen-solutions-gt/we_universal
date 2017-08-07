@@ -443,6 +443,12 @@ p.rules img {
 	text-shadow: none;
 }
 
+.pagination,
+.no-wrap{
+    word-wrap: normal;
+    white-space: nowrap;
+}
+
 /**
 * Button padding in fieldset
 */
