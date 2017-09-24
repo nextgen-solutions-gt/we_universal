@@ -141,8 +141,10 @@
 
 						</div>
 					</dd>
-					<dd class="posts">{searchresults.TOPIC_REPLIES} <dfn>{L_REPLIES}</dfn></dd>
-					<dd class="views">{searchresults.TOPIC_VIEWS} <dfn>{L_VIEWS}</dfn></dd>
+					<dd class="posts">
+						{L_REPLIES}: <strong>{searchresults.TOPIC_REPLIES}</strong><br />
+						{L_VIEWS}: <strong>{searchresults.TOPIC_VIEWS}</strong>
+					</dd>
 					<dd class="lastpost">
 						<span><dfn>{L_LAST_POST} </dfn>{L_POST_BY_AUTHOR} {searchresults.LAST_POST_AUTHOR_FULL}
 							<!-- IF not S_IS_BOT -->
