@@ -79,15 +79,11 @@
 				<dl title="{searchresults.TOPIC_FOLDER_IMG_ALT}">
 					<dt class="icon {searchresults.TOPIC_IMG_STYLE}"><!-- IF searchresults.TOPIC_ICON_IMG --><img src="{T_ICONS_PATH}{searchresults.TOPIC_ICON_IMG}" alt="" title="" /><!-- ENDIF --></dt>
 					<dd>
+						<!-- IF not searchresults.S_UNREAD_TOPIC and not S_IS_BOT --><a href="{searchresults.U_LAST_POST}" class="row-item-link"></a><!-- ENDIF -->
 						<!-- IF searchresults.S_UNREAD_TOPIC and not S_IS_BOT --><a href="{searchresults.U_NEWEST_POST}" class="row-item-link"></a><!-- ENDIF -->
 						<div class="list-inner">
 
 							<!-- EVENT topiclist_row_prepend -->
-							<!-- IF searchresults.S_UNREAD_TOPIC and not S_IS_BOT -->
-								<a class="unread" href="{searchresults.U_NEWEST_POST}">
-									<i class="icon fa-file fa-fw icon-red icon-md" aria-hidden="true"></i><span class="sr-only">{L_NEW_POST}</span>
-								</a>
-							<!-- ENDIF -->
 							<a href="{searchresults.U_VIEW_TOPIC}" class="topictitle">{searchresults.TOPIC_TITLE}</a>
 							<!-- IF searchresults.S_TOPIC_UNAPPROVED or searchresults.S_POSTS_UNAPPROVED -->
 								<a href="{searchresults.U_MCP_QUEUE}" title="{L_TOPIC_UNAPPROVED}">
@@ -116,7 +112,7 @@
 							<!-- IF searchresults.TOPIC_REPLIES --><span class="responsive-show left-box" style="display: none;">{L_REPLIES}{L_COLON} <strong>{searchresults.TOPIC_REPLIES}</strong></span><!-- ENDIF -->
 							<!-- ENDIF -->
 
-							<div class="responsive-hide">
+							<div class="responsive-hide left-box">
 								<!-- IF searchresults.S_HAS_POLL --><i class="icon fa-bar-chart fa-fw" aria-hidden="true"></i><!-- ENDIF -->
 								<!-- IF searchresults.ATTACH_ICON_IMG --><i class="icon fa-paperclip fa-fw" aria-hidden="true"></i><!-- ENDIF -->
 								{L_POST_BY_AUTHOR} {searchresults.TOPIC_AUTHOR_FULL} &raquo; {searchresults.FIRST_POST_TIME} &raquo; {L_IN} <a href="{searchresults.U_VIEW_FORUM}">{searchresults.FORUM_TITLE}</a>
@@ -141,8 +137,10 @@
 
 						</div>
 					</dd>
-					<dd class="posts">{searchresults.TOPIC_REPLIES} <dfn>{L_REPLIES}</dfn></dd>
-					<dd class="views">{searchresults.TOPIC_VIEWS} <dfn>{L_VIEWS}</dfn></dd>
+					<dd class="posts">
+						{L_REPLIES}: <strong>{searchresults.TOPIC_REPLIES}</strong><br />
+						{L_VIEWS}: <strong>{searchresults.TOPIC_VIEWS}</strong>
+					</dd>
 					<dd class="lastpost">
 						<span><dfn>{L_LAST_POST} </dfn>{L_POST_BY_AUTHOR} {searchresults.LAST_POST_AUTHOR_FULL}
 							<!-- IF not S_IS_BOT -->
