@@ -410,11 +410,6 @@ dl.faq dt {
 	padding: 18px;
 }
 
-/* Bottom padding is a place for back to top button */
-.post .postbody {
-	padding-bottom: 36px;
-}
-
 /* User profile */
 .postprofile,
 .pm .postprofile,
@@ -429,6 +424,11 @@ dl.faq dt {
 	vertical-align: top;
 }
 
+.postprofile dd {
+	overflow: auto;
+    max-height: 110px;
+}
+
 .postprofile dt,
 .postprofile dd {
 	margin: 0;
@@ -441,6 +441,7 @@ dl.faq dt {
 }
 
 .postprofile strong {
+    font-weight: bold;
 	color: #414141;
 }
 
@@ -457,12 +458,6 @@ dl.faq dt {
 	.postprofile .avatar img {
 		display: inline;
 	}
-}
-
-.postprofile dt.no-profile-rank,
-.postprofile dd.profile-rank,
-.postprofile .search-result-date {
-	margin-bottom: 18px;
 }
 
 ul.profile-icons {
@@ -507,7 +502,6 @@ ul.profile-icons {
 
 .postbody h3,
 .postbody h3.first {
-	margin: 0 !important;
 	padding: 0;
 	line-height: 21px;
 	font-size: 16px;
@@ -643,6 +637,7 @@ p.author {
 	right: 18px;
 	bottom: 16px;
 	height: auto;
+    margin-top: 10px;
 }
 
 /* Polls */
@@ -800,6 +795,12 @@ a.postlink:hover {
 	background: none;
 	color: #bc2a4d;
 }
+
+ .signature {
+     width: 87%;
+   /*  max-height: 90px;*/
+     overflow: hidden;
+ }
 
 .signature a,
 .signature a:active,
