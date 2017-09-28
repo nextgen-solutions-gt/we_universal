@@ -424,7 +424,7 @@ dl.faq dt {
 	vertical-align: top;
 }
 
-.postprofile dd {
+.postprofile dd.profile-custom-field {
 	overflow: auto;
     max-height: 110px;
 }
