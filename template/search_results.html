@@ -79,15 +79,11 @@
 				<dl title="{searchresults.TOPIC_FOLDER_IMG_ALT}">
 					<dt class="icon {searchresults.TOPIC_IMG_STYLE}"><!-- IF searchresults.TOPIC_ICON_IMG --><img src="{T_ICONS_PATH}{searchresults.TOPIC_ICON_IMG}" alt="" title="" /><!-- ENDIF --></dt>
 					<dd>
+						<!-- IF not searchresults.S_UNREAD_TOPIC and not S_IS_BOT --><a href="{searchresults.U_LAST_POST}" class="row-item-link"></a><!-- ENDIF -->
 						<!-- IF searchresults.S_UNREAD_TOPIC and not S_IS_BOT --><a href="{searchresults.U_NEWEST_POST}" class="row-item-link"></a><!-- ENDIF -->
 						<div class="list-inner">
 
 							<!-- EVENT topiclist_row_prepend -->
-							<!-- IF searchresults.S_UNREAD_TOPIC and not S_IS_BOT -->
-								<a class="unread" href="{searchresults.U_NEWEST_POST}">
-									<i class="icon fa-file fa-fw icon-red icon-md" aria-hidden="true"></i><span class="sr-only">{L_NEW_POST}</span>
-								</a>
-							<!-- ENDIF -->
 							<a href="{searchresults.U_VIEW_TOPIC}" class="topictitle">{searchresults.TOPIC_TITLE}</a>
 							<!-- IF searchresults.S_TOPIC_UNAPPROVED or searchresults.S_POSTS_UNAPPROVED -->
 								<a href="{searchresults.U_MCP_QUEUE}" title="{L_TOPIC_UNAPPROVED}">
