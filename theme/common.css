@@ -406,6 +406,12 @@ p.rules img {
 /**
  * Pagination
  */
+
+.row .pagination {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
 .pagination {
 	font-size: 12px;
 }
