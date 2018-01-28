@@ -72,6 +72,9 @@ body {
 }
 
  .inventea-menu li > a {
+     /* the following attribute should be 'block' to display the header buttons in responsive mode or 'none' to hide them */
+        display: block;
+      /*  display: none; */
         max-width: 125px;
         text-overflow: ellipsis;
         overflow: hidden;
@@ -88,7 +91,9 @@ body {
 .inventea-mobile-dropdown-menu {
 	position: absolute;
 	right: 10px;
-	display: block;
+    /* the following attribute should be 'block' to display the dropdown menu in responsive mode or 'none' to hide it */
+	display: none;
+/*	display: block;*/
 	margin-top: -6px;
 }
 
