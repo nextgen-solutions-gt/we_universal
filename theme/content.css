@@ -67,7 +67,12 @@ ul.topiclist li.row dl {
 	display: table;
 	table-layout: fixed;
 	width: 100%;
+	margin: 0;
 	padding: 0;
+}
+
+ul.topiclist li.row dd {
+	padding: 4px;
 }
 
 /* Cell  */
