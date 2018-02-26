@@ -87,6 +87,11 @@ ul.topiclist dd {
 	float: none;
 }
 
+ul.topiclist li.row dd {
+	margin-bottom: 4px;
+	padding: 4px 0 4px;
+}
+
 /* Different background in odd columns */
 ul.topiclist li.row dt:nth-child(even),
 ul.topiclist li.row dd:nth-child(even),
@@ -426,7 +431,7 @@ dl.faq dt {
 
 .postprofile dd.profile-custom-field {
 	overflow: auto;
-    max-height: 110px;
+    max-height: 130px;
 }
 
 .postprofile dt,
@@ -798,7 +803,7 @@ a.postlink:hover {
 
  .signature {
      width: 87%;
-   /*  max-height: 90px;*/
+     max-height: 100px;
      overflow: hidden;
  }
 

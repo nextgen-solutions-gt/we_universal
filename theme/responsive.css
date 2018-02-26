@@ -4,7 +4,6 @@
 
 @media only screen and (max-width: 1000px) {
 .inventea-dashboard {
-    width: 100%;
     height: 180px;
 	background-size: 125% 100%;
 }
@@ -40,6 +39,8 @@ body {
 
 .inventea-dashboard {
 	min-height: inherit;
+    width: 100%;
+    height: 180px;
 }
 
 .inventea-footer-wrapper {
@@ -197,7 +198,7 @@ ul.topiclist dd.redirect {
 }
 
 .post .postprofile {
-	padding: 18px;
+	padding: 9px;
 	margin-bottom: 0;
 	border: 0;
 }
@@ -238,7 +239,7 @@ ul.topiclist dd.redirect {
 }
 
 .search .postbody {
-	padding: 18px;
+	padding: 9px;
 }
 
 /**
