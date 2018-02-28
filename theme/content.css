@@ -92,11 +92,6 @@ ul.topiclist dd {
 	float: none;
 }
 
-ul.topiclist li.row dd {
-	margin-bottom: 4px;
-	padding: 4px 0 4px;
-}
-
 /* Different background in odd columns */
 ul.topiclist li.row dt:nth-child(even),
 ul.topiclist li.row dd:nth-child(even),
