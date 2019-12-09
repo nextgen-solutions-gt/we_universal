@@ -3,20 +3,39 @@
 		<!-- EVENT overall_footer_page_body_after -->
 	</div>
 
-	<div class="inventea-footer-wrapper">
-		<div id="page-footer" class="inventea-footer" role="contentinfo">
-			<!-- INCLUDE navbar_footer.html -->
+<div class="inventea-footer-wrapper">
+	<div id="page-footer" class="inventea-footer" role="contentinfo">
+		<!-- INCLUDE navbar_footer.html -->
 
-			<footer class="inventea-credits">
-				<!-- EVENT overall_footer_copyright_prepend -->
-				{CREDIT_LINE}<br />
-				<!-- IF TRANSLATION_INFO -->{TRANSLATION_INFO}<br /><!-- ENDIF -->
-				Style we_universal created by <a href="https://inventea.com/" title="phpBB styles, HTML5 &amp; CSS3 templates">INVENTEA</a> & <a href="http://xeronix.org/" title="phpBB styles and much more">nextgen</a>
-				<!-- EVENT overall_footer_copyright_append -->
-				<!-- IF DEBUG_OUTPUT --><br />{DEBUG_OUTPUT}<!-- ENDIF -->
-			</footer>
-		</div>
+		<footer class="inventea-credits">
+			<!-- EVENT overall_footer_copyright_prepend -->
+			<p class="footer-row">
+				<span class="footer-copyright">{{ CREDIT_LINE }}</span>
+			</p>
+			<!-- IF TRANSLATION_INFO -->
+			<p class="footer-row">
+				<span class="footer-copyright">{{ TRANSLATION_INFO }}</span>
+			</p>
+			<!-- ENDIF -->
+			Style we_universal created by <a href="https://inventea.com/" title="phpBB styles, HTML5 &amp; CSS3 templates">INVENTEA</a>
+			<!-- EVENT overall_footer_copyright_append -->
+			<p class="footer-row">
+				<a class="footer-link" href="{{ U_PRIVACY }}" title="{{ lang('PRIVACY_LINK') }}" role="menuitem">
+					<span class="footer-link-text">{{ lang('PRIVACY_LINK') }}</span>
+				</a>
+				|
+				<a class="footer-link" href="{{ U_TERMS_USE }}" title="{{ lang('TERMS_LINK') }}" role="menuitem">
+					<span class="footer-link-text">{{ lang('TERMS_LINK') }}</span>
+				</a>
+			</p>
+			<!-- IF DEBUG_OUTPUT -->
+			<p class="footer-row">
+				<span class="footer-info">{{ DEBUG_OUTPUT }}</span>
+			</p>
+			<!-- ENDIF -->
+		</footer>
 	</div>
+</div>
 
 	<div id="darkenwrapper" class="darkenwrapper" data-ajax-error-title="{L_AJAX_ERROR_TITLE}" data-ajax-error-text="{L_AJAX_ERROR_TEXT}" data-ajax-error-text-abort="{L_AJAX_ERROR_TEXT_ABORT}" data-ajax-error-text-timeout="{L_AJAX_ERROR_TEXT_TIMEOUT}" data-ajax-error-text-parsererror="{L_AJAX_ERROR_TEXT_PARSERERROR}">
 		<div id="darken" class="darken">&nbsp;</div>
@@ -41,13 +60,13 @@
 </div>
 </div>
 
-<script type="text/javascript" src="{T_JQUERY_LINK}"></script>
-<!-- IF S_ALLOW_CDN --><script type="text/javascript">window.jQuery || document.write('\x3Cscript src="{T_ASSETS_PATH}/javascript/jquery.min.js?assets_version={T_ASSETS_VERSION}">\x3C/script>');</script><!-- ENDIF -->
-<script type="text/javascript" src="{T_ASSETS_PATH}/javascript/core.js?assets_version={T_ASSETS_VERSION}"></script>
+<script src="{T_JQUERY_LINK}"></script>
+<!-- IF S_ALLOW_CDN --><script>window.jQuery || document.write('\x3Cscript src="{T_ASSETS_PATH}/javascript/jquery.min.js?assets_version={T_ASSETS_VERSION}">\x3C/script>');</script><!-- ENDIF -->
+<script src="{T_ASSETS_PATH}/javascript/core.js?assets_version={T_ASSETS_VERSION}"></script>
 <!-- INCLUDEJS forum_fn.js -->
 <!-- INCLUDEJS ajax.js -->
 <!-- IF S_ALLOW_CDN -->
-	<script type="text/javascript">
+	<script>
 		(function($){
 			var $fa_cdn = $('head').find('link[rel="stylesheet"]').first(),
 				$span = $('<span class="fa" style="display:none"></span>').appendTo('body');
@@ -63,6 +82,7 @@
 <!-- IF S_COOKIE_NOTICE -->
 	<script src="{T_ASSETS_PATH}/cookieconsent/cookieconsent.min.js?assets_version={T_ASSETS_VERSION}"></script>
 	<script>
+		if (typeof window.cookieconsent === "object") {
 		window.addEventListener("load", function(){
 			window.cookieconsent.initialise({
 				"palette": {
@@ -77,9 +97,11 @@
 				"content": {
 					"message": "{LA_COOKIE_CONSENT_MSG}",
 					"dismiss": "{LA_COOKIE_CONSENT_OK}",
-					"link": "{LA_COOKIE_CONSENT_INFO}"
-				}
-			})});
+						"href": "{UA_PRIVACY}"
+					}
+				});
+			});
+			}
 	</script>
 <!-- ENDIF -->
 

@@ -4,7 +4,7 @@
 phpBB style: [we_universal](https://inventea.com/en/projects/we_universal)
 ==========================================================================
 
-we_universal is a modern, clean style for **phpBB 3.0** and **phpBB 3.1**.
+we_universal is a modern, clean style for **phpBB 3.0**, **phpBB 3.1** and **phpBB 3.2**.
 It uses principles of flat design and Responsive Web Design technique.
 Fits great on desktops and various mobile devices. The style is suitable for
 any kind of forum communities and it is compatible with all major browsers.

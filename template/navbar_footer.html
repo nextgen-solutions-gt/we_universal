@@ -28,10 +28,11 @@
 				</a>
 			</li>
 		<!-- ENDIF -->
-		<!-- IF U_ACP --><li class="small-icon" data-last-responsive="true"><a href="{U_ACP}" title="{L_ACP}" role="menuitem">{L_ACP_SHORT}</a></li><!-- ENDIF -->
+		<!-- IF U_ACP --><li class="small-icon" data-last-responsive="true"><a href="{{ U_ACP }}" role="menuitem">{{ lang('ACP') }}</a></li><!-- ENDIF -->
 		<!-- IF U_CONTACT_US --><li class="small-icon" data-last-responsive="true"><a href="{U_CONTACT_US}" role="menuitem">{L_CONTACT_US}</a></li><!-- ENDIF -->
 
 		<!-- EVENT overall_footer_teamlink_before -->
+
 		<!-- EVENT overall_footer_teamlink_after -->
 
 		<!-- IF not S_IS_BOT --><li class="small-icon"><a href="{U_DELETE_COOKIES}" data-ajax="true" data-refresh="true" role="menuitem">{L_DELETE_COOKIES}</a></li><!-- ENDIF -->
