@@ -21,3 +21,7 @@ ul.topiclist li.row dd {
 .footer-row {
 	font-size: 12px;
 }
+
+.dropdown-extended .header .header_settings {
+	font-size: 10px;
+}
