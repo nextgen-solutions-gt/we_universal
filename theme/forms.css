@@ -275,3 +275,11 @@ input.search {
 .pmlist .username_list {
 	height: 78px;
 }
+
+.search-header {
+	border-radius: 4px;
+	display: block;
+	float: left;
+	margin-right: 0;
+	margin-top: 0;
+}

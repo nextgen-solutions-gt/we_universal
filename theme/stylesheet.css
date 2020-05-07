@@ -28,3 +28,50 @@ ul.topiclist li.row dd {
 .dropdown-extended .header .header_settings {
 	font-size: 10px;
 }
+
+.jumpbox-cat-link {
+	background-color: #4c4c4c;
+	border-top-color: #4c4c4c;	
+}
+
+.jumpbox-cat-link:hover {
+	background-color: #7c7c7c;
+	border-top-color: #7c7c7c;
+}
+
+.jumpbox-cat-link, .jumpbox-forum-link {
+	font-weight: normal;
+	text-transform: uppercase;
+}
+
+.jumpbox-sub-link {
+    background-color: #f1f1f1;
+}
+
+.jumpbox-sub-link:hover {
+	background-color: #F1F8FF;
+}
+
+.dropdown-extended .header {
+	background-color: #4c4c4c;
+	background-image: none;
+	color: #FFFFFF;
+	text-shadow: 1px 1px 1px gray;
+}
+
+.dropdown-extended .header a {
+	color: #FFF;
+}
+
+.dropdown-extended .pointer-inner {
+	border-color: #4c4c4c transparent;
+}
+
+.dropdown-extended ul li:hover {
+	background-color: #e5e5e5;
+}
+
+.search-header {
+	box-shadow: none;
+	border: 1px solid #d9d9d9;
+}
