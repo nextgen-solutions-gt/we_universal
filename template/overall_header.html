@@ -187,6 +187,9 @@
 		<!-- EVENT overall_header_page_body_before -->
 
 		<ul id="nav-breadcrumbs" class="linklist navlinks" role="menubar">
+		<!-- IF S_INDEX -->
+			<li class="rightside inventea-time"><!-- IF S_USER_LOGGED_IN -->{LAST_VISIT_DATE}<!-- ELSE -->{CURRENT_TIME}<!-- ENDIF --></li>
+		<!-- ENDIF -->		
 		{% set MICRODATA = 'itemtype="https://schema.org/ListItem" itemprop="itemListElement" itemscope' %}
 		{% set navlink_position = 1 %}
 
@@ -212,16 +215,7 @@
 
 			{% EVENT overall_header_breadcrumb_append %}
 		</li>
-
 		{% EVENT overall_header_breadcrumbs_after %}
-
-		{% if S_DISPLAY_SEARCH and not S_IN_SEARCH %}
-			<li class="rightside responsive-search">
-				<a href="{{ U_SEARCH }}" title="{{ lang('SEARCH_ADV_EXPLAIN') }}" role="menuitem">
-					<i class="icon fa-search fa-fw" aria-hidden="true"></i><span class="sr-only">{{ lang('SEARCH') }}</span>
-				</a>
-			</li>
-		{% endif %}
 		</ul>
 
 		<!-- IF S_BOARD_DISABLED and S_USER_LOGGED_IN and (U_MCP or U_ACP) -->

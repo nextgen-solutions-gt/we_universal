@@ -4,13 +4,13 @@
         <div class="pointer"><div class="pointer-inner"></div></div>
         <ul class="dropdown-contents" role="menubar">
 		
-							<!-- IF U_SITE_HOME -->
+							{% if U_SITE_HOME %}
 							<li>
 								<a href="{U_SITE_HOME}" role="menuitem">
 									<i class="icon fa fa-fw fa-home" aria-hidden="true"></i><span>{L_SITE_HOME}</span>
 								</a>
 							</li>
-							<!-- ENDIF -->
+							{% endif %}
 							
 							<li>
 								<a href="{U_INDEX}" role="menuitem">
@@ -73,7 +73,7 @@
 
 							<!-- EVENT navbar_header_quick_links_after -->
 
-            <!-- IF not S_IS_BOT -->
+					<!-- IF not S_IS_BOT -->
 						<!-- IF S_DISPLAY_MEMBERLIST -->
 							<li>
 								<a href="{U_MEMBERLIST}" role="menuitem">
@@ -88,23 +88,23 @@
 								</a>
 							</li>
 						<!-- ENDIF -->
-            <!-- ENDIF -->
+					<!-- ENDIF -->
 
-		<!-- IF U_ACP -->
-			<li data-last-responsive="true">
-				<a href="{U_ACP}" title="{L_ACP}" role="menuitem">
-					<i class="icon fa-cogs fa-fw" aria-hidden="true"></i><span>{L_ACP_SHORT}</span>
-				</a>
-			</li>
-		<!-- ENDIF -->
-		<!-- IF U_MCP -->
-			<li data-last-responsive="true">
-				<a href="{U_MCP}" title="{L_MCP}" role="menuitem">
-					<i class="icon fa-gavel fa-fw" aria-hidden="true"></i><span>{L_MCP_SHORT}</span>
-				</a>
-			</li>
-		<!-- ENDIF -->
-            <!-- EVENT overall_header_navigation_append -->
+					<!-- IF U_ACP -->
+							<li data-last-responsive="true">
+						    	<a href="{U_ACP}" title="{L_ACP}" role="menuitem">
+							    	<i class="icon fa-cogs fa-fw" aria-hidden="true"></i><span>{L_ACP_SHORT}</span>
+								</a>
+							</li>
+					<!-- ENDIF -->
+					<!-- IF U_MCP -->
+							<li data-last-responsive="true">
+								<a href="{U_MCP}" title="{L_MCP}" role="menuitem">
+									<i class="icon fa-gavel fa-fw" aria-hidden="true"></i><span>{L_MCP_SHORT}</span>
+								</a>
+							</li>
+					<!-- ENDIF -->
+					<!-- EVENT overall_header_navigation_append -->
         </ul>
     </div>
 </div>
