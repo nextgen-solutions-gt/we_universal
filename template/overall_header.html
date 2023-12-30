@@ -26,7 +26,7 @@
 	phpBB style name: we_universal
 	Based on style:   prosilver (this is the default phpBB3 style)
 	Original author:  Tom Beddard ( http://www.subBlue.com/ )
-	Modified by:      Melvin García ( http://www.melvingarcia.com/ )
+	Modified by:      nextgen ( https://nextgen.gt/ )
 -->
 
 <!-- IF S_ALLOW_CDN -->
@@ -45,6 +45,7 @@
 	})(document);
 </script>
 <!-- ENDIF -->
+<script>if (localStorage.universaldarkhole) document.documentElement.setAttribute("data-theme", localStorage.universaldarkhole);</script>
 
 <link href="{ROOT_PATH}styles/prosilver/theme/stylesheet.css?assets_version={T_ASSETS_VERSION}" rel="stylesheet">
 <link href="{T_FONT_AWESOME_LINK}" rel="stylesheet">
@@ -73,10 +74,6 @@
 {$STYLESHEETS}
 
 <!-- EVENT overall_header_stylesheets_after -->
-
-<!--[if lt IE 9]>
-	<script type="text/javascript" src="{T_TEMPLATE_PATH}/html5shiv.min.js"></script>
-<![endif]-->
 
 </head>
 <body id="phpbb" class="nojs notouch section-{SCRIPT_NAME} {S_CONTENT_DIRECTION} {BODY_CLASS}<!-- IF S_USER_LOGGED_IN --> logged-in<!-- ELSE --> logged-out<!-- ENDIF -->">
@@ -165,6 +162,7 @@
 					
 					<!-- EVENT navbar_header_logged_out_content -->
 				<!-- ENDIF -->
+				<li class="small-icon rightside" data-skip-responsive="true"><a href="#" id="switch-theme" class="switch-theme"><i class="icon fa-fw"></i></a></li>
 			</ul>
 		</nav>
 	</div>
@@ -182,7 +180,6 @@
 		</div>
 		<!-- EVENT overall_header_headerbar_after -->
 	</header>
-
 	<div class="inventea-wrapper inventea-content" role="main">
 		<!-- EVENT overall_header_page_body_before -->
 

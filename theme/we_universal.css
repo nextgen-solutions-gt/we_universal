@@ -1,0 +1,380 @@
+@charset "utf-8";
+
+:root {
+  --border-radius-big: max(0px, min(4px, calc((100vw - 4px - 100%) * 9999)));
+  --border-radius-small: 2px;
+  --inventea-online-bg: #0ead8e;
+  --inventea-online-border: #0c9076;
+  --inventea-text-color: #FFFFFF;
+}
+
+html,
+[data-theme="light"] {
+  --row-bg: #fafcfe;
+  --forabg-list: #fafcfe;
+  --topiclist: #f1f1f1;
+  --forabg: #4c4c4c;
+  --dropdown-extended-header: #FFFFFF;
+  --inventea-header: #292c2f;
+  --inventea-userbar: #959595;
+  --inventea-footer: #959595;
+  --content-color: #414141;
+  --bg-web-color: #FFFFFF;
+  --color-1: var(--bg-web-color);
+  --color-2: #525252;
+  --color-3: #242424;
+  --text-color-1: #444444;
+  --text-color-2: #3d3d3d;
+  --text-color-3: #000000;
+  --text-color-4: #6b6b6b;
+  --text-color-5: #e7e7e7;
+  --links-color: #3f3f3f;
+  --links-color-hover-focus: #bc2a4d;
+  --h2-color: var(--text-color-1);
+  --bg1-color: #f8f8f8;
+  --bg2-color: #f4f4f4;
+  --bg3-color: var(--topiclist);
+  --bg4-color: #f2f2f2;
+  --bg5-color: #ececec;
+  --input-bg: #FFFFFF;
+  --input-txt-color: #333333;
+  --border-color-1: #e7e7e7;
+  --border-color-2: #525252;
+  --border-color-3: #CCCCCC;
+  --button-bg: #dfdfdf;
+  --reported-bg: #eed9d9;
+  --bg-rule: #f2dede;
+  --color-warning: #ffe799;
+  --color-error: #e60a4c;
+  --switch-light-dark: "\f186";
+  --item-bg: rgba(55, 55, 55, 0.1);
+  --shadowcolor: #d5d5d5;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    --row-bg: #282828;
+    --forabg-list: #000000;
+    --topiclist: #333333;
+    --forabg: #181818;
+    --dropdown-extended-header: #0b0b0b;
+    --inventea-header: #1A1A1A;
+    --inventea-userbar: #959595;
+    --inventea-footer: #959595;
+    --content-color: #848484;
+    --bg-web-color: #0d0d0d;
+    --color-1: #474747;
+    --color-2: #898989;
+    --color-3: #FFFFFF;
+    --text-color-1: #e2e2e2;
+    --text-color-2: #cccccc;
+    --text-color-3: #FFFFFF;
+    --text-color-4: #afafaf;
+    --text-color-5: #e7e7e7;
+    --links-color: #e0e0e0;
+    --links-color-hover-focus: #d9204d;
+    --h2-color: var(--text-color-1);
+    --bg1-color: #202020;
+    --bg2-color: #252525;
+    --bg3-color: var(--bg1-color);
+    --bg4-color: #252525;
+    --bg5-color: #1c1c1c;    
+    --input-bg: #121212;
+    --input-txt-color: #FFFFFF;
+    --border-color-1: #242424;
+    --border-color-2: #6A6A6A;
+    --border-color-3: #484848;
+    --button-bg: #222222;
+    --reported-bg: #60323E;
+    --bg-rule: #2D181D;
+    --color-warning: #ffe799;
+    --color-error: #c90842;
+    --switch-light-dark: "\f0eb";
+    --item-bg: rgba(255, 255, 255, 0.1);
+    --shadowcolor: #2e2e2e;
+  }
+}
+
+[data-theme="dark"] {
+  --row-bg: #282828;
+  --forabg-list: #000000;
+  --topiclist: #333333;
+  --forabg: #181818;
+  --dropdown-extended-header: #0b0b0b;  
+  --inventea-header: #1A1A1A;  
+  --inventea-userbar: #959595;
+  --inventea-footer: #959595;
+  --content-color: #848484;
+  --bg-web-color: #0d0d0d;
+  --color-1: #474747;
+  --color-2: #898989;
+  --color-3: #FFFFFF;
+  --text-color-1: #e2e2e2;
+  --text-color-2: #cccccc;
+  --text-color-3: #FFFFFF;
+  --text-color-4: #afafaf;
+  --text-color-5: #e7e7e7;
+  --links-color: #e0e0e0;
+  --links-color-hover-focus: #d9204d;
+  --h2-color: var(--text-color-1);
+  --bg1-color: #202020;
+  --bg2-color: #252525;
+  --bg3-color: var(--bg1-color);
+  --bg4-color: #252525;
+  --bg5-color: #1c1c1c; 
+   --input-bg: #121212;
+  --input-txt-color: #FFFFFF;
+  --border-color-1: #242424;
+  --border-color-2: #6A6A6A;
+  --border-color-3: #484848;
+  --reported-bg: #60323E;
+  --button-bg: #222222;
+  --bg-rule: #2D181D;
+  --color-warning: #ffe799;
+  --color-error: #c90842; 
+  --switch-light-dark: "\f0eb";
+  --item-bg: rgba(255, 255, 255, 0.1);
+  --shadowcolor: #2e2e2e;
+}
+
+.switch-theme i:before {
+  content: var(--switch-light-dark);
+}
+
+/*  Custom CSS
+  ---------------------------------------------------------------
+*/
+
+ul.topiclist li.row dd {
+  padding: 4px 0 0 10px;
+}
+
+.footer-row {
+  font-size: 12px;
+}
+
+.dropdown-extended .header .header_settings {
+  font-size: 10px;
+}
+
+.jumpbox-cat-link {
+  background-color: var(--forabg);
+  border-top-color: var(--forabg);  
+}
+
+.jumpbox-cat-link:hover {
+  background-color: var(--text-color-4);
+  border-top-color: var(--text-color-4);
+}
+
+.jumpbox-cat-link, .jumpbox-forum-link {
+  font-weight: normal;
+  text-transform: uppercase;
+}
+
+.jumpbox-sub-link {
+  background-color: var(--bg3-color);
+}
+
+.jumpbox-sub-link:hover {
+  background-color: var(--bg4-color);
+}
+
+.jumpbox .dropdown .pointer-inner {
+  border-color: var(--bg3-color) transparent;
+}
+
+.dropdown-extended .header {
+  background-color: var(--dropdown-extended-header);
+  background-image: none;
+  color: var(--color-3);
+  text-shadow: none;
+}
+
+.dropdown-extended .header a {
+  color: var(--color-3);
+}
+
+.dropdown-extended .pointer-inner {
+  border-color: var(--forabg) transparent;
+}
+
+.dropdown-extended ul li:hover {
+  background-color: var(--bg5-color);
+}
+
+.dropdown-extended .footer > a {
+  background-color: var(--bg-web-color);
+}
+
+.dropdown .dropdown-contents {
+  background: var(--bg-web-color);
+  border-color: var(--border-color-3);
+}
+
+.dropdown-extended a.mark_read {
+  background-color: var(--bg-web-color);
+}
+
+.dropdown .pointer-inner {
+  border-color: var(--bg-web-color) transparent;
+}
+
+.notification_list p.notification-time {
+  color: var(--color-2);
+}
+
+.fa-angle-left:before {
+  line-height: 20px;
+}
+
+.alert_close .icon:before {
+  background-color: var(--color-1);
+}
+
+.phpbb_alert {
+  background-color: var(--input-bg);
+  border-color: var(--inventea-userbar);
+  border: 1px solid transparent;
+}
+
+.caret {
+  border-color: var(--border-color-3);
+}
+
+.row-item[class*="_read"],
+.row-item[class*="_unread"],
+.forum_link,
+.topic_moved {
+  background-image: none;
+}
+
+.row-item[class*="_read"]:before,
+.row-item[class*="_unread"]:before,
+.forum_link:before,
+.topic_moved:before,
+.row-item[class*="_mine"]:after {
+  font-family: 'FontAwesome';
+  font-variant: normal;
+  text-rendering: auto;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.row-item[class*="_read"]:before,
+.row-item[class*="_unread"]:before,
+.forum_link:before,
+.topic_moved:before {
+  left: 15px;
+  line-height: 28px;
+  width: 28px;
+  height: 28px;
+  font-size: 25px;
+  text-align: center;
+  border-radius: var(--border-radius-small);
+}
+
+.row-item[class*="_mine"]:after {
+  content: "\f005";
+  font-size: 8px;
+  left: 40px;
+  top: 14px;
+}
+
+.rtl .row-item[class*="_mine"]:after {
+  left: auto;
+  right: 4px;
+}
+
+.row-item[class*="global_"]:before,
+.row-item[class*="announce_"]:before {
+  content: "\f0a1";
+}
+
+.row-item[class*="sticky_"]:before {
+  content: "\f08d";
+}
+
+.row-item[class*="forum_"]:before {
+  content: "\f086";
+}
+
+.row-item[class*="topic_"]:before,
+.row-item[class*="pm_"]:before {
+  content: "\f075";
+}
+
+.row-item[class*="_locked"]:before {
+  content: "\f023";
+}
+
+.row-item.forum_link:before {
+  content: "\f0c1";
+}
+
+.row-item.topic_moved:before {
+  content: "\f064";
+}
+
+.icon.icon-red {
+  font-weight: bold;
+}
+
+.unread:hover {
+  text-decoration: none;
+}
+
+.dropdown-contents .fa-file-o:before {
+  content: "\f0e5";
+}
+
+.lastpost .fa-external-link-square:before {
+  content: "\f0e5";
+}
+
+.icon-mark .fa-check-circle:before {
+  content: "\f046";
+}
+
+.row-item .fa-exclamation:before {
+  content: "\f06a";
+}
+
+.row-item .fa-file-o:before {
+  content: "\f114";
+}
+
+.row-item .fa-question:before {
+  content: "\f059";
+}
+
+.row-item .fa-recycle:before {
+  content: "\f057";
+}
+
+/* Unread States */
+.global_unread:before, 
+.global_unread_mine:before, 
+.global_unread_locked:before, 
+.global_unread_locked_mine:before, 
+.announce_unread:before, 
+.announce_unread_mine:before, 
+.announce_unread_locked:before, 
+.announce_unread_locked_mine:before, 
+.forum_unread:before, 
+.forum_unread_locked:before, 
+.forum_unread_subforum:before, 
+.sticky_unread:before, 
+.sticky_unread_mine:before, 
+.sticky_unread_locked:before, 
+.sticky_unread_locked_mine:before, 
+.pm_unread:before, 
+.topic_unread:before, 
+.topic_unread_mine:before, 
+.topic_unread_hot:before, 
+.topic_unread_hot_mine:before, 
+.topic_unread_locked:before, 
+.topic_unread_locked_mine:before {
+  color: var(--links-color-hover-focus);
+}

@@ -1,10 +1,10 @@
-![we_universal](https://inventea.com/images/we_universal.png)
+![we_universal](https://nextgen.gt/images/we_universal.png)
 
 
-phpBB style: [we_universal](https://inventea.com/en/projects/we_universal)
+phpBB style: [we_universal](https://nextgen.gt/forum/viewtopic.php?t=13)
 ==========================================================================
 
-we_universal is a modern, clean style for **phpBB 3.0**, **phpBB 3.1** and **phpBB 3.2**.
+we_universal is a modern, clean style for **phpBB 3.0**, **phpBB 3.1**, **phpBB 3.2** and **phpBB 3.3**.
 It uses principles of flat design and Responsive Web Design technique.
 Fits great on desktops and various mobile devices. The style is suitable for
 any kind of forum communities and it is compatible with all major browsers.
@@ -31,4 +31,3 @@ Assets
 ------
 
 - Header photo from [picjumbo](http://picjumbo.com)
-- [Font Awesome](http://fortawesome.github.io/Font-Awesome/) 4.3.0

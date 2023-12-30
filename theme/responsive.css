@@ -3,7 +3,7 @@
  */
 html,
 body {
-	background: #fff;
+	background: var(--bg-web-color);
 }
 
 @media only screen and (max-width: 700px), only screen and (max-device-width: 700px) {
@@ -17,7 +17,8 @@ body {
 
 .inventea-wrapper,
 .inventea-dashboard,
-.inventea-footer {
+.inventea-footer,
+.inventea-menu-header {
 	width: 100%;
 	border: 0;
 }
@@ -83,10 +84,10 @@ body {
 .inventea-toggle {
 	display: block;
 	padding: 3px 6px 2px;
-	border-bottom: 3px solid #ccc;
+	border-bottom: 3px solid var(--border-color-3);
 	border-radius: 5px;
-	background: #e9e9e9;
-	color: #414141;
+	background: var(--bg5-color);
+	color: var(--content-color);
 	line-height: 1;
 	font-size: 21px;
 }
@@ -95,7 +96,7 @@ body {
 .inventea-toggle:hover,
 .inventea-toggle:active {
 	outline: 0;
-	color: #414141;
+	color: var(--content-color);
 	cursor: pointer;
 }
 
@@ -137,11 +138,11 @@ ul.topiclist dd.redirect {
 }
 
 .forabg ul.topiclist li.row dd.lastpost {
-	background-color: #f1f1f1;
+	background-color: var(--bg3-color);
 }
 
 .forabg ul.topiclist li.row:nth-child(even) dd.lastpost {
-	background-color: #e9e9e9;
+	background-color: var(--border-color-1);
 }
 
 
@@ -196,15 +197,15 @@ ul.topiclist dd.redirect {
 }
 
 .post.bg1 .postbody:before {
-	border-color: transparent transparent #f8f8f8 transparent;
+	border-color: transparent transparent var(--bg1-color) transparent;
 }
 
 .post.bg2 .postbody:before {
-	border-color: transparent transparent #f2f2f2 transparent;
+	border-color: transparent transparent var(--bg4-color) transparent;
 }
 
 .post.reported .postbody:before {
-	border-color: transparent transparent #f7ecef transparent;
+	border-color: transparent transparent var(--bg-rule) transparent;
 }
 
 /* Post message left triangle */
@@ -267,6 +268,11 @@ input.tiny {
 	width: 100% !important;
 }
 
+}
+
+.responsive-tab .responsive-tab-link:before {
+	border-color: var(--color-3);
+	left: 12px;
 }
 
 @media only screen and (max-width: 550px), only screen and (max-device-width: 550px) {

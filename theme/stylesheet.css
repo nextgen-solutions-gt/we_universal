@@ -3,7 +3,7 @@
 	Style name:			we_universal
 	Based on style:		prosilver (the default phpBB 3.3.x style)
 	Original author:	Tom Beddard ( http://www.subblue.com/ )
-	Modified by:		Melvin García ( http://www.melvingarcia.com/ )
+	Modified by:		nextgen ( https://nextgen.gt/ )
     --------------------------------------------------------------
 */
 
@@ -12,66 +12,4 @@
 @import url("cp.css?hash=50d868ab");
 @import url("forms.css?hash=b64464fb");
 @import url("responsive.css?hash=87b53e08");
-
-/*	Custom CSS
-	---------------------------------------------------------------
-*/
-
-ul.topiclist li.row dd {
-    padding: 4px 0 0 10px;
-}
-
-.footer-row {
-	font-size: 12px;
-}
-
-.dropdown-extended .header .header_settings {
-	font-size: 10px;
-}
-
-.jumpbox-cat-link {
-	background-color: #4c4c4c;
-	border-top-color: #4c4c4c;	
-}
-
-.jumpbox-cat-link:hover {
-	background-color: #7c7c7c;
-	border-top-color: #7c7c7c;
-}
-
-.jumpbox-cat-link, .jumpbox-forum-link {
-	font-weight: normal;
-	text-transform: uppercase;
-}
-
-.jumpbox-sub-link {
-    background-color: #f1f1f1;
-}
-
-.jumpbox-sub-link:hover {
-	background-color: #F1F8FF;
-}
-
-.dropdown-extended .header {
-	background-color: #4c4c4c;
-	background-image: none;
-	color: #FFFFFF;
-	text-shadow: 1px 1px 1px gray;
-}
-
-.dropdown-extended .header a {
-	color: #FFF;
-}
-
-.dropdown-extended .pointer-inner {
-	border-color: #4c4c4c transparent;
-}
-
-.dropdown-extended ul li:hover {
-	background-color: #e5e5e5;
-}
-
-.search-header {
-	box-shadow: none;
-	border: 1px solid #d9d9d9;
-}
+@import url("we_universal.css");
