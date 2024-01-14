@@ -275,6 +275,13 @@ input.tiny {
 	left: 12px;
 }
 
+@media (min-width: 701px) and (max-width: 950px) {
+
+ul.topiclist dt .list-inner {
+	margin-right: 0 !important;
+}
+}
+
 @media only screen and (max-width: 550px), only screen and (max-device-width: 550px) {
 	ul.topiclist.forums dd.lastpost {
 		display: none;

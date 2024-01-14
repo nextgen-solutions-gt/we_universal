@@ -266,7 +266,7 @@ ul.topiclist li.row dd {
 .row-item[class*="_unread"]:before,
 .forum_link:before,
 .topic_moved:before {
-  left: 15px;
+  left: 12px;
   line-height: 28px;
   width: 28px;
   height: 28px;
@@ -278,7 +278,7 @@ ul.topiclist li.row dd {
 .row-item[class*="_mine"]:after {
   content: "\f005";
   font-size: 8px;
-  left: 40px;
+  left: 38px;
   top: 14px;
 }
 
@@ -377,4 +377,17 @@ ul.topiclist li.row dd {
 .topic_unread_locked:before, 
 .topic_unread_locked_mine:before {
   color: var(--links-color-hover-focus);
+}
+
+.jumpbox-forum-link {
+  background-color: var(--bg3-color);
+}
+
+.dropdown {
+  left: -0.7rem;
+  top: 1rem;
+}
+
+.row .list-inner {
+  padding: 4px 5px;
 }

@@ -1,4 +1,4 @@
-![we_universal](https://nextgen.gt/images/we_universal.png)
+![we_universal](https://nextgen.gt/images/we_universal_new.png)
 
 
 phpBB style: [we_universal](https://nextgen.gt/forum/viewtopic.php?t=13)

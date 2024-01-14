@@ -175,7 +175,7 @@ ul.topiclist.two-long-columns dt .list-inner {
 }
 
 dl.row-item dt {
-	background-position: 10px 30px;
+	background-position: 10px 35px;
   position: relative;
 }
 
@@ -1049,10 +1049,6 @@ hr + .topic-actions {
 	background-color: var(--bg-web-color); /* Old browsers */ /* FF3.6+ */
 	background-image: linear-gradient(to bottom, var(--border-color-1) 0%,var(--bg-web-color) 100%); /* W3C */
 	text-shadow: none;
-}
-
-.button-search, .button-search-end {
-	padding: 4px 5px !important;
 }
 
 .buttons div {
