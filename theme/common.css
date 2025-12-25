@@ -467,3 +467,15 @@ fieldset.quick-login input.inputbox {
 fieldset dl:hover dt label {
   	color: var(--text-color-3);
 }
+
+.emoji {
+	min-height: 18px;
+	min-width: 18px;
+	height: 1em;
+	width: 1em;
+}
+
+.avatar-rank-container {
+	max-width: 20%;
+}
+

@@ -453,7 +453,7 @@ dl.faq dt {
 	font-size: 1.3em;
 }
 
-.group-description ul {
+.group-description ol, .group-description ul {
 	list-style-position: inside;
 
 }
