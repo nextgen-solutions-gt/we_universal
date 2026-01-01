@@ -45,7 +45,27 @@
 	})(document);
 </script>
 <!-- ENDIF -->
-<script>if (localStorage.universaldarkhole) document.documentElement.setAttribute("data-theme", localStorage.universaldarkhole);</script>
+<script>
+(function () {
+  const key = "universaldarkhole";
+  const stored = localStorage.getItem(key) || "system";
+
+  function apply(theme) {
+    if (theme === "system") {
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      document.documentElement.setAttribute(
+        "data-theme",
+        prefersDark ? "dark" : "light"
+      );
+    } else {
+      document.documentElement.setAttribute("data-theme", theme);
+    }
+  }
+
+  apply(stored);
+})();
+</script>
+
 
 <link href="{ROOT_PATH}styles/prosilver/theme/stylesheet.css?assets_version={T_ASSETS_VERSION}" rel="stylesheet">
 <link href="{T_FONT_AWESOME_LINK}" rel="stylesheet">
@@ -162,7 +182,22 @@
 					
 					<!-- EVENT navbar_header_logged_out_content -->
 				<!-- ENDIF -->
-				<li class="small-icon rightside" data-skip-responsive="true"><a href="#" id="switch-theme" class="switch-theme"><i class="icon fa-fw"></i></a></li>
+<li class="small-icon rightside" data-skip-responsive="true">
+  <a href="#"
+     id="switch-theme"
+     class="switch-theme"
+     role="button"
+     aria-label=""
+     aria-describedby="theme-tooltip">
+     
+    <i class="icon fa fa-fw fa-desktop" aria-hidden="true"></i>
+
+    <span id="theme-tooltip"
+          class="theme-tooltip"
+          role="tooltip"></span>
+  </a>
+</li>
+
 			</ul>
 		</nav>
 	</div>

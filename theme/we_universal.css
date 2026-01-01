@@ -46,7 +46,6 @@ html,
   --bg-rule: #f2dede;
   --color-warning: #ffe799;
   --color-error: #e60a4c;
-  --switch-light-dark: "\f186";
   --item-bg: rgba(55, 55, 55, 0.1);
   --shadowcolor: #d5d5d5;
 }
@@ -89,7 +88,6 @@ html,
     --bg-rule: #2D181D;
     --color-warning: #ffe799;
     --color-error: #c90842;
-    --switch-light-dark: "\f0eb";
     --item-bg: rgba(255, 255, 255, 0.1);
     --shadowcolor: #2e2e2e;
   }
@@ -132,13 +130,14 @@ html,
   --bg-rule: #2D181D;
   --color-warning: #ffe799;
   --color-error: #c90842; 
-  --switch-light-dark: "\f0eb";
   --item-bg: rgba(255, 255, 255, 0.1);
   --shadowcolor: #2e2e2e;
 }
 
-.switch-theme i:before {
-  content: var(--switch-light-dark);
+.switch-theme i {
+  font-size: 16px;
+  line-height: 1;
+  display: inline-block;
 }
 
 /*  Custom CSS
@@ -390,4 +389,32 @@ ul.topiclist li.row dd {
 
 .row .list-inner {
   padding: 4px 5px;
+}
+
+.switch-theme {
+  position: relative;
+}
+
+.theme-tooltip {
+  position: absolute;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+
+  background: var(--bg2-color);
+  color: var(--text-color-1);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease;
+  z-index: 1000;
+}
+
+.switch-theme:hover .theme-tooltip,
+.switch-theme:focus-visible .theme-tooltip {
+  opacity: 1;
 }
