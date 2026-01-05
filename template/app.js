@@ -1,13 +1,9 @@
 $(function () {
   const key = "universaldarkhole";
   const $html = $("html");
-  const $btn = $("#switch-theme");
-  const $icon = $btn.find("i");
+  const $buttons = $(".theme-toggle button");
 
-  const states = ["light", "dark", "system"];
-
-  // 🔹 textos por idioma (sin PHP, sin archivos extra)
-  const labels = {
+  const i18n = {
     es: {
       light: "Modo claro",
       dark: "Modo oscuro",
@@ -21,12 +17,10 @@ $(function () {
   };
 
   function getLang() {
-    // soporta es, es-ES, en, en-GB, etc.
-    return (document.documentElement.lang || "en").split("-")[0];
-  }
-
-  function getNext(current) {
-    return states[(states.indexOf(current) + 1) % states.length];
+    return document.documentElement.lang &&
+      document.documentElement.lang.toLowerCase().startsWith("es")
+      ? "es"
+      : "en";
   }
 
 function apply(theme) {
@@ -37,48 +31,41 @@ function apply(theme) {
     $html.attr("data-theme", theme);
   }
 
+  // 👇 clave
+  $html.attr("data-theme-selected", theme);
+
   localStorage.setItem(key, theme);
-  updateIcon(theme);
-  updateTooltip(theme); // 👈 aquí
+  updateUI(theme);
 }
 
 
-  function updateIcon(theme) {
-    $icon
-      .removeClass("fa-sun-o fa-moon-o fa-desktop")
-      .addClass(
-        theme === "light"
-          ? "fa-sun-o"
-          : theme === "dark"
-          ? "fa-moon-o"
-          : "fa-desktop"
-      );
+  function updateUI(theme) {
+    const lang = getLang();
+    const text = i18n[lang][theme];
+
+    $buttons.removeClass("active").each(function () {
+      const $btn = $(this);
+      const btnTheme = $btn.data("theme-option");
+
+      if (btnTheme === theme) {
+        $btn.addClass("active");
+      }
+
+      $btn.attr("title", i18n[lang][btnTheme]);
+      $btn.attr("aria-label", i18n[lang][btnTheme]);
+    });
   }
 
-function updateTooltip(theme) {
-  const lang = getLang();
-  const dict = labels[lang] || labels.en;
-
-  const text = dict[theme];
-
-  $btn
-    .attr("aria-label", text)
-    .find(".theme-tooltip")
-    .text(text);
-}
-
-
-  // estado inicial
+  // Estado inicial
   const saved = localStorage.getItem(key) || "system";
   apply(saved);
 
-  // click
-  $btn.on("click", function (e) {
-    e.preventDefault();
-    apply(getNext(localStorage.getItem(key) || "system"));
+  // Click
+  $buttons.on("click", function () {
+    apply($(this).data("theme-option"));
   });
 
-  // cambios del sistema (solo si está en SYSTEM)
+  // Cambio del sistema
   window
     .matchMedia("(prefers-color-scheme: dark)")
     .addEventListener("change", () => {

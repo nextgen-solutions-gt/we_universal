@@ -1,35 +1,68 @@
 <nav role="navigation">
 	<div class="inventea-posts-menu">
 		<ul class="inventea-menu" role="menubar">
-			<!-- EVENT navbar_header_quick_links_before -->
+			{% EVENT navbar_header_quick_links_before %}
 
-			<!-- IF S_DISPLAY_SEARCH -->
-				<!-- IF S_REGISTERED_USER --><li><a href="{U_SEARCH_SELF}" role="menuitem">{L_SEARCH_SELF}</a></li><!-- ENDIF -->
-				<!-- IF S_USER_LOGGED_IN --><li><a href="{U_SEARCH_NEW}" role="menuitem">{L_SEARCH_NEW}</a></li><!-- ENDIF -->
-				<!-- IF S_LOAD_UNREADS --><li><a href="{U_SEARCH_UNREAD}" role="menuitem">{L_SEARCH_UNREAD}</a></li><!-- ENDIF -->
-				<li><a href="{U_SEARCH_UNANSWERED}" role="menuitem">{L_SEARCH_UNANSWERED}</a></li>
-				<li><a href="{U_SEARCH_ACTIVE_TOPICS}" role="menuitem">{L_SEARCH_ACTIVE_TOPICS}</a></li>
-			<!-- ENDIF -->
+			{% if S_DISPLAY_SEARCH %}
+							{% if S_REGISTERED_USER %}
+								<li>
+									<a href="{{ U_SEARCH_SELF }}" role="menuitem">
+										{{ lang('SEARCH_SELF') }}
+									</a>
+								</li>
+							{% endif %}
+							{% if S_USER_LOGGED_IN %}
+								<li>
+									<a href="{{ U_SEARCH_NEW }}" role="menuitem">
+										{{ lang('SEARCH_NEW') }}
+									</a>
+								</li>
+							{% endif %}
+							{% if S_LOAD_UNREADS %}
+								<li>
+									<a href="{{ U_SEARCH_UNREAD }}" role="menuitem">
+										{{ lang('SEARCH_UNREAD') }}
+									</a>
+								</li>
+							{% endif %}
+							<li>
+								<a href="{{ U_SEARCH_UNANSWERED }}" role="menuitem">
+									{{ lang('SEARCH_UNANSWERED') }}
+								</a>
+							</li>
+							<li>
+								<a href="{{ U_SEARCH_ACTIVE_TOPICS }}" role="menuitem">
+									{{ lang('SEARCH_ACTIVE_TOPICS') }}
+								</a>
+							</li>
+							{% if U_MARK_FORUMS %}
+							<li>
+								<a href="{{ U_MARK_FORUMS }}" role="menuitem" accesskey="m" data-ajax="mark_forums_read">
+									{{ lang('MARK_FORUMS_READ') }}
+								</a>
+							</li>
+							{% endif %}							
+			{% endif %}
 
-			<!-- EVENT navbar_header_quick_links_after -->
+			{% EVENT navbar_header_quick_links_after %}
 		</ul>
 	</div>
 
 	<div class="inventea-forum-menu">
 		<ul class="inventea-menu" role="menubar">
-			<!-- EVENT overall_header_navigation_prepend -->
-			<li><a href="{U_FAQ}" rel="help" title="{L_FAQ_EXPLAIN}" role="menuitem">{L_FAQ}</a></li>
-			<!-- IF S_DISPLAY_SEARCH --><li><a href="{U_SEARCH}" role="menuitem">{L_SEARCH}</a></li><!-- ENDIF -->
+			{% EVENT overall_header_navigation_prepend %}
+			<li><a href="{{ U_FAQ }}" rel="help" title="{{ lang('FAQ_EXPLAIN') }}" role="menuitem">{{ lang('FAQ') }}</a></li>
+			{% if S_DISPLAY_SEARCH %}<li><a href="{{ U_SEARCH }}" role="menuitem">{{ lang('SEARCH') }}</a></li>{% endif %}
 
-			<!-- IF not S_IS_BOT -->
-				<!-- IF S_DISPLAY_MEMBERLIST --><li><a href="{U_MEMBERLIST}" role="menuitem">{L_MEMBERLIST}</a></li><!-- ENDIF -->
-				<!-- IF U_TEAM --><li><a href="{U_TEAM}" role="menuitem">{L_THE_TEAM}</a></li><!-- ENDIF -->
-			<!-- ENDIF -->
+			{% if not S_IS_BOT %}
+				{% if S_DISPLAY_MEMBERLIST %}<li><a href="{{ U_MEMBERLIST }}" role="menuitem">{{ lang('MEMBERLIST') }}</a></li>{% endif %}
+				{% if U_TEAM %}<li><a href="{{ U_TEAM }}" role="menuitem">{{ lang('THE_TEAM') }}</a></li>{% endif %}
+			{% endif %}
 
-			<!-- IF U_MCP --><li><a href="{U_MCP}" title="{L_MCP}" role="menuitem">{L_MCP_SHORT}</a></li><!-- ENDIF -->
-			<!-- IF U_ACP --><li><a href="{U_ACP}" title="{L_ACP}" role="menuitem">{L_ACP_SHORT}</a></li><!-- ENDIF -->
+			{% if U_MCP %}<li><a href="{{ U_MCP }}" title="{{ lang('MCP') }}" role="menuitem">{{ lang('MCP_SHORT') }}</a></li>{% endif %}
+			{% if U_ACP %}<li><a href="{{ U_ACP }}" title="{{ lang('ACP') }}" role="menuitem">{{ lang('ACP_SHORT') }}</a></li>{% endif %}
 
-			<!-- EVENT overall_header_navigation_append -->
+			{% EVENT overall_header_navigation_append %}
 		</ul>
 	</div>
 </nav>

@@ -1,26 +1,28 @@
 <!DOCTYPE html>
-<html dir="{S_CONTENT_DIRECTION}" lang="{S_USER_LANG}">
+<html dir="{{ S_CONTENT_DIRECTION }}" lang="{{ S_USER_LANG }}">
 <head>
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-{META}
-<title><!-- IF UNREAD_NOTIFICATIONS_COUNT -->({UNREAD_NOTIFICATIONS_COUNT}) <!-- ENDIF --><!-- IF not S_VIEWTOPIC and not S_VIEWFORUM -->{SITENAME} - <!-- ENDIF --><!-- IF S_IN_MCP -->{L_MCP} - <!-- ELSEIF S_IN_UCP -->{L_UCP} - <!-- ENDIF -->{PAGE_TITLE}<!-- IF S_VIEWTOPIC or S_VIEWFORUM --> - {SITENAME}<!-- ENDIF --></title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="{{ SITE_SHORTNAME }}">
+{{ META }}
+<title>{% if UNREAD_NOTIFICATIONS_COUNT %}({{ UNREAD_NOTIFICATIONS_COUNT }}) {% endif %}{% if not S_VIEWTOPIC and not S_VIEWFORUM %}{{ SITENAME }} - {% endif %}{% if S_IN_MCP %}{{ lang('MCP') }} - {% elseif S_IN_UCP %}{{ lang('UCP') }} - {% endif %}{{ PAGE_TITLE }}{% if S_VIEWTOPIC or S_VIEWFORUM %} - {{ SITENAME }}{% endif %}</title>
 
-<!-- IF S_ENABLE_FEEDS -->
-	<!-- IF S_ENABLE_FEEDS_OVERALL --><link rel="alternate" type="application/atom+xml" title="{L_FEED} - {SITENAME}" href="{{ path('phpbb_feed_index') }}"><!-- ENDIF -->
-	<!-- IF S_ENABLE_FEEDS_NEWS --><link rel="alternate" type="application/atom+xml" title="{L_FEED} - {L_FEED_NEWS}" href="{{ path('phpbb_feed_news') }}"><!-- ENDIF -->
-	<!-- IF S_ENABLE_FEEDS_FORUMS --><link rel="alternate" type="application/atom+xml" title="{L_FEED} - {L_ALL_FORUMS}" href="{{ path('phpbb_feed_forums') }}"><!-- ENDIF -->
-	<!-- IF S_ENABLE_FEEDS_TOPICS --><link rel="alternate" type="application/atom+xml" title="{L_FEED} - {L_FEED_TOPICS_NEW}" href="{{ path('phpbb_feed_topics') }}"><!-- ENDIF -->
-	<!-- IF S_ENABLE_FEEDS_TOPICS_ACTIVE --><link rel="alternate" type="application/atom+xml" title="{L_FEED} - {L_FEED_TOPICS_ACTIVE}" href="{{ path('phpbb_feed_topics_active') }}"><!-- ENDIF -->
-	<!-- IF S_ENABLE_FEEDS_FORUM and S_FORUM_ID --><link rel="alternate" type="application/atom+xml" title="{L_FEED} - {L_FORUM} - {FORUM_NAME}" href="{{ path('phpbb_feed_forum', { forum_id : S_FORUM_ID } ) }}"><!-- ENDIF -->
-	<!-- IF S_ENABLE_FEEDS_TOPIC and S_TOPIC_ID --><link rel="alternate" type="application/atom+xml" title="{L_FEED} - {L_TOPIC} - {TOPIC_TITLE}" href="{{ path('phpbb_feed_topic', { topic_id : S_TOPIC_ID } ) }}"><!-- ENDIF -->
-	<!-- EVENT overall_header_feeds -->
-<!-- ENDIF -->
+{% if S_ENABLE_FEEDS %}
+	{% if S_ENABLE_FEEDS_OVERALL %}<link rel="alternate" type="application/atom+xml" title="{{ lang('FEED') }} - {{ SITENAME }}" href="{{ path('phpbb_feed_index') }}">{% endif %}
+	{% if S_ENABLE_FEEDS_NEWS %}<link rel="alternate" type="application/atom+xml" title="{{ lang('FEED') }} - {{ lang('FEED_NEWS') }}" href="{{ path('phpbb_feed_news') }}">{% endif %}
+	{% if S_ENABLE_FEEDS_FORUMS %}<link rel="alternate" type="application/atom+xml" title="{{ lang('FEED') }} - {{ lang('ALL_FORUMS') }}" href="{{ path('phpbb_feed_forums') }}">{% endif %}
+	{% if S_ENABLE_FEEDS_TOPICS %}<link rel="alternate" type="application/atom+xml" title="{{ lang('FEED') }} - {{ lang('FEED_TOPICS_NEW') }}" href="{{ path('phpbb_feed_topics') }}">{% endif %}
+	{% if S_ENABLE_FEEDS_TOPICS_ACTIVE %}<link rel="alternate" type="application/atom+xml" title="{{ lang('FEED') }} - {{ lang('FEED_TOPICS_ACTIVE') }}" href="{{ path('phpbb_feed_topics_active') }}">{% endif %}
+	{% if S_ENABLE_FEEDS_FORUM and S_FORUM_ID %}<link rel="alternate" type="application/atom+xml" title="{{ lang('FEED') }} - {{ lang('FORUM') }} - {{ FORUM_NAME }}" href="{{ path('phpbb_feed_forum', { forum_id : S_FORUM_ID } ) }}">{% endif %}
+	{% if S_ENABLE_FEEDS_TOPIC and S_TOPIC_ID %}<link rel="alternate" type="application/atom+xml" title="{{ lang('FEED') }} - {{ lang('TOPIC') }} - {{ TOPIC_TITLE }}" href="{{ path('phpbb_feed_topic', { topic_id : S_TOPIC_ID } ) }}">{% endif %}
+	{% EVENT overall_header_feeds %}
+{% endif %}
 
-<!-- IF U_CANONICAL -->
-	<link rel="canonical" href="{U_CANONICAL}">
-<!-- ENDIF -->
+{% if U_CANONICAL %}
+	<link rel="canonical" href="{{ U_CANONICAL }}">
+{% endif %}
 
 <!--
 	phpBB style name: we_universal
@@ -29,7 +31,7 @@
 	Modified by:      nextgen ( https://nextgen.gt/ )
 -->
 
-<!-- IF S_ALLOW_CDN -->
+{% if S_ALLOW_CDN %}
 <script>
 	WebFontConfig = {
 		google: {
@@ -44,61 +46,68 @@
 		s.parentNode.insertBefore(wf, s);
 	})(document);
 </script>
-<!-- ENDIF -->
+{% endif %}
 <script>
 (function () {
   const key = "universaldarkhole";
   const stored = localStorage.getItem(key) || "system";
 
-  function apply(theme) {
+  function resolveTheme(theme) {
     if (theme === "system") {
-      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-      document.documentElement.setAttribute(
-        "data-theme",
-        prefersDark ? "dark" : "light"
-      );
-    } else {
-      document.documentElement.setAttribute("data-theme", theme);
+      return window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light";
     }
+    return theme;
   }
 
-  apply(stored);
+  const resolved = resolveTheme(stored);
+
+  // Tema global (CSS)
+  document.documentElement.setAttribute("data-theme", resolved);
+
+  // Estado del switcher (CSS-only)
+  document.documentElement.setAttribute("data-theme-selected", stored);
 })();
 </script>
 
 
-<link href="{ROOT_PATH}styles/prosilver/theme/stylesheet.css?assets_version={T_ASSETS_VERSION}" rel="stylesheet">
+
 <link href="{T_FONT_AWESOME_LINK}" rel="stylesheet">
-<link href="{T_STYLESHEET_LINK}" rel="stylesheet">
-<link href="{ROOT_PATH}styles/prosilver/theme/responsive.css?assets_version={T_ASSETS_VERSION}" rel="stylesheet">
-<link href="{T_THEME_PATH}/responsive.css?assets_version={T_ASSETS_VERSION}" rel="stylesheet">
+<link href="{{ ROOT_PATH }}styles/prosilver/theme/stylesheet.css?assets_version={{ T_ASSETS_VERSION }}" rel="stylesheet">
+<link href="{{ T_STYLESHEET_LINK }}" rel="stylesheet">
+<link href="{{ ROOT_PATH }}styles/prosilver/theme/responsive.css?assets_version={{ T_ASSETS_VERSION }}" rel="stylesheet">
+<link href="{{ T_THEME_PATH }}/responsive.css?assets_version={{ T_ASSETS_VERSION }}" rel="stylesheet">
 
-<!-- IF S_CONTENT_DIRECTION eq 'rtl' -->
-	<link href="{ROOT_PATH}styles/prosilver/theme/bidi.css?assets_version={T_ASSETS_VERSION}" rel="stylesheet">
-<!-- ENDIF -->
+{% if S_CONTENT_DIRECTION eq 'rtl' %}
+	<link href="{{ ROOT_PATH }}styles/prosilver/theme/bidi.css?assets_version={{ T_ASSETS_VERSION }}" rel="stylesheet">
+{% endif %}
 
-<!-- IF S_PLUPLOAD -->
-	<link href="{ROOT_PATH}styles/prosilver/theme/plupload.css?assets_version={T_ASSETS_VERSION}" rel="stylesheet">
-<!-- ENDIF -->
+{% if S_PLUPLOAD %}
+	<link href="{{ ROOT_PATH }}styles/prosilver/theme/plupload.css?assets_version={{ T_ASSETS_VERSION }}" rel="stylesheet">
+{% endif %}
 
-<!-- IF S_COOKIE_NOTICE -->
-	<link href="{T_ASSETS_PATH}/cookieconsent/cookieconsent.min.css?assets_version={T_ASSETS_VERSION}" rel="stylesheet">
-<!-- ENDIF -->
+{% if S_COOKIE_NOTICE %}
+	<link href="{{ T_ASSETS_PATH }}/cookieconsent/cookieconsent.min.css?assets_version={{ T_ASSETS_VERSION }}" rel="stylesheet">
+{% endif %}
 
 <!--[if lte IE 9]>
-	<link href="{ROOT_PATH}styles/prosilver/theme/tweaks.css?assets_version={T_ASSETS_VERSION}" rel="stylesheet">
+	<link href="{{ ROOT_PATH }}styles/prosilver/theme/tweaks.css?assets_version={{ T_ASSETS_VERSION }}" rel="stylesheet">
 <![endif]-->
 
-<!-- EVENT overall_header_head_append -->
+{% EVENT overall_header_head_append %}
 
-{$STYLESHEETS}
+{{ definition.STYLESHEETS }}
 
-<!-- EVENT overall_header_stylesheets_after -->
+{% EVENT overall_header_stylesheets_after %}
+{% if NOTIFICATIONS_WEBPUSH_ENABLE %}
+	{% include 'ucp_notifications_webpush.html' %}
+{% endif %}
 
 </head>
-<body id="phpbb" class="nojs notouch section-{SCRIPT_NAME} {S_CONTENT_DIRECTION} {BODY_CLASS}<!-- IF S_USER_LOGGED_IN --> logged-in<!-- ELSE --> logged-out<!-- ENDIF -->">
+<body id="phpbb" class="nojs notouch section-{{ SCRIPT_NAME }} {{ S_CONTENT_DIRECTION }} {{ BODY_CLASS }}{% if S_USER_LOGGED_IN %} logged-in{% else %} logged-out{% endif %}">
 
-<!-- EVENT overall_header_body_before -->
+{% EVENT overall_header_body_before %}
 
 <div id="wrap" class="wrap">
 	<a id="top" class="top-anchor" accesskey="t"></a>
@@ -106,156 +115,140 @@
 	<div class="inventea-headerbar">
 		<nav class="inventea-wrapper inventea-userbar">
 	
-			<!-- INCLUDE navbar_responsive_header.html -->
+			{% INCLUDE 'navbar_responsive_header.html' %}
 
 			<ul class="linklist bulletin inventea-user-menu" role="menubar">
-				<!-- IF S_REGISTERED_USER -->
-					<!-- EVENT navbar_header_user_profile_prepend -->
-					<li id="username_logged_in" class="rightside <!-- IF CURRENT_USER_AVATAR --> no-bulletin<!-- ENDIF -->" data-skip-responsive="true">
-						<!-- EVENT navbar_header_username_prepend -->
+				{% if S_REGISTERED_USER %}
+					{% EVENT navbar_header_user_profile_prepend %}
+					<li id="username_logged_in" class="rightside {% if CURRENT_USER_AVATAR_HTML %} no-bulletin{% endif %}">
+						{% EVENT navbar_header_username_prepend %}
 						<div class="header-profile dropdown-container">
-							<a href="{U_PROFILE}" class="header-avatar dropdown-trigger"><!-- IF CURRENT_USER_AVATAR -->{CURRENT_USER_AVATAR}<!-- ELSE --><img src="{T_THEME_PATH}/images/no_avatar.gif" alt="" /><!-- ENDIF --> {CURRENT_USERNAME_SIMPLE}</a>
-							<div class="dropdown">
-								<div class="pointer"><div class="pointer-inner"></div></div>
-								<ul class="dropdown-contents" role="menu">
-								<!-- IF U_RESTORE_PERMISSIONS -->
+							<a href="{{ U_PROFILE }}" class="header-avatar dropdown-trigger">
+							{% if CURRENT_USER_AVATAR_HTML %}{{ CURRENT_USER_AVATAR_HTML }}{% else %}<img src="{T_THEME_PATH}/images/no_avatar.gif" alt="" />{% endif %} {{ CURRENT_USERNAME_SIMPLE }}
+							{{ Icon('font', 'caret-down', '', true, '', {'style': 'color: #' ~ CURRENT_USER_GROUP_COLOR}) }}
+						</a>
+						<div class="dropdown">
+							<div class="pointer"><div class="pointer-inner"></div></div>
+							<ul class="dropdown-contents" role="menu">
+								{% if U_RESTORE_PERMISSIONS %}
 									<li>
-										<a href="{U_RESTORE_PERMISSIONS}">
-											<i class="icon fa-refresh fa-fw" aria-hidden="true"></i><span>{L_RESTORE_PERMISSIONS}</span>
+										<a href="{{ U_RESTORE_PERMISSIONS }}">
+											{{ Icon('font', 'rotate', lang('RESTORE_PERMISSIONS'), false) }}
 										</a>
 									</li>
-								<!-- ENDIF -->
+								{% endif %}
 
-									<!-- EVENT navbar_header_profile_list_before -->
+								{% EVENT navbar_header_profile_list_before %}
 
+								<li>
+									<a href="{{ U_PROFILE }}" title="{{ lang('PROFILE') }}" role="menuitem">
+										{{ Icon('font', 'sliders', lang('PROFILE'), false) }}
+									</a>
+								</li>
+								{% if U_USER_PROFILE %}
 									<li>
-										<a href="{U_PROFILE}" title="{L_PROFILE}" role="menuitem">
-											<i class="icon fa-sliders fa-fw" aria-hidden="true"></i><span>{L_PROFILE}</span>
+										<a href="{{ U_USER_PROFILE }}" title="{{ lang('READ_PROFILE') }}" role="menuitem">
+											{{ Icon('font', 'user', lang('READ_PROFILE'), false) }}
 										</a>
 									</li>
-								<!-- IF U_USER_PROFILE -->
-									<li>
-										<a href="{U_USER_PROFILE}" title="{L_READ_PROFILE}" role="menuitem">
-											<i class="icon fa-user fa-fw" aria-hidden="true"></i><span>{L_READ_PROFILE}</span>
-										</a>
-									</li>
-								<!-- ENDIF -->
-									<!-- EVENT navbar_header_profile_list_after -->
+								{% endif %}
 
-									<li class="separator"></li>
-									<li>
-										<a href="{U_LOGIN_LOGOUT}" title="{L_LOGIN_LOGOUT}" accesskey="x" role="menuitem">
-											<i class="icon fa-power-off fa-fw" aria-hidden="true"></i><span>{L_LOGIN_LOGOUT}</span>
-										</a>
-									</li>
-								</ul>
-							</div>
+								{% EVENT navbar_header_profile_list_after %}
+
+								<li class="separator"></li>
+								<li>
+									<a href="{{ U_LOGIN_LOGOUT }}" title="{{ lang('LOGIN_LOGOUT') }}" accesskey="x" role="menuitem">
+										{{ Icon('font', 'power-off', lang('LOGIN_LOGOUT'), false) }}
+									</a>
+								</li>
+							</ul>
+						</div>
 						</div>
 						
-						<!-- EVENT navbar_header_username_append -->
+						{% EVENT navbar_header_username_append %}
 						
 					</li>
 					
-					<!-- IF S_DISPLAY_PM -->
-						<li class="small-icon rightside" data-skip-responsive="true">
-							<a href="{U_PRIVATEMSGS}" role="menuitem">
-								<i class="icon fa-inbox fa-fw" aria-hidden="true"></i><span>{L_PRIVATE_MESSAGES} </span><strong class="badge<!-- IF not PRIVATE_MESSAGE_COUNT --> hidden<!-- ENDIF -->">{PRIVATE_MESSAGE_COUNT}</strong>
-							</a>
-						</li>	
-					<!-- ENDIF -->
-					
-					<!-- IF S_NOTIFICATIONS_DISPLAY -->
-						<li class="small-icon dropdown-container dropdown-{S_CONTENT_FLOW_END} rightside" data-last-responsive="true">
-							<a href="{U_VIEW_ALL_NOTIFICATIONS}" id="notification_list_button" class="dropdown-trigger">
-								<i class="icon fa-bell fa-fw" aria-hidden="true"></i><span>{L_NOTIFICATIONS} </span><strong class="badge<!-- IF not NOTIFICATIONS_COUNT --> hidden<!-- ENDIF -->">{NOTIFICATIONS_COUNT}</strong>
+				{% if S_DISPLAY_PM %}
+					<li class="small-icon rightside" data-skip-responsive="true">
+						<a href="{{ U_PRIVATEMSGS }}" role="menuitem">
+							{{ Icon('font', 'inbox', lang('PRIVATE_MESSAGES'), true) }}<strong class="badge{% if not PRIVATE_MESSAGE_COUNT %} hidden{% endif %}"> {PRIVATE_MESSAGE_COUNT}</strong>
 						</a>
-							<!-- INCLUDE notification_dropdown.html -->
-						</li>
-					<!-- ENDIF -->
-					
-					<!-- EVENT navbar_header_user_profile_append -->
-				<!-- ELSE IF not S_IS_BOT -->
-						<li class="small-icon rightside" data-skip-responsive="true"><a href="{U_LOGIN_LOGOUT}" title="{L_LOGIN_LOGOUT}" accesskey="x" role="menuitem"><i class="icon fa-fw fa-sign-in" aria-hidden="true"></i>{L_LOGIN_LOGOUT}</a></li>
-					<!-- IF S_REGISTER_ENABLED and not (S_SHOW_COPPA or S_REGISTRATION) -->
-						<li class="small-icon rightside" data-skip-responsive="true"><a href="{U_REGISTER}" role="menuitem"><i class="icon fa-fw fa-user-plus" aria-hidden="true"></i>{L_REGISTER}</a></li>
-					<!-- ENDIF -->
-					
-					<!-- EVENT navbar_header_logged_out_content -->
-				<!-- ENDIF -->
-<li class="small-icon rightside" data-skip-responsive="true">
-  <a href="#"
-     id="switch-theme"
-     class="switch-theme"
-     role="button"
-     aria-label=""
-     aria-describedby="theme-tooltip">
-     
-    <i class="icon fa fa-fw fa-desktop" aria-hidden="true"></i>
+					</li>
+				{% endif %}
 
-    <span id="theme-tooltip"
-          class="theme-tooltip"
-          role="tooltip"></span>
-  </a>
-</li>
+				{% if S_NOTIFICATIONS_DISPLAY %}
+					<li class="dropdown-container dropdown-{S_CONTENT_FLOW_END} rightside">
+						<a href="{{ U_VIEW_ALL_NOTIFICATIONS }}" id="notification-button" class="dropdown-trigger">
+							{{ Icon('font', 'bell', lang('NOTIFICATIONS'), true) }}<strong class="badge{% if not NOTIFICATIONS_COUNT %} hidden{% endif %}">{NOTIFICATIONS_COUNT}</strong>
+						</a>
+
+						{% include 'notification_dropdown.html' %}
+
+					</li>
+				{% endif %}
+
+			{% EVENT navbar_header_user_profile_append %}
+			{% elseif not S_IS_BOT %}
+				<li class="rightside" >
+					<a href="{{ U_LOGIN_LOGOUT }}" title="{{ lang('LOGIN_LOGOUT') }}" accesskey="x" role="menuitem">
+						{{ Icon('font', 'power-off', lang('LOGIN_LOGOUT'), false) }}
+					</a>
+				</li>
+				{% if S_REGISTER_ENABLED and not (S_SHOW_COPPA or S_REGISTRATION) %}
+					<li class="rightside">
+						<a href="{{ U_REGISTER }}" role="menuitem">
+							{{ Icon('font', 'pen-to-square', lang('REGISTER'), false) }}
+						</a>
+					</li>
+				{% endif %}
+
+				{% EVENT navbar_header_logged_out_content %}
+
+			{% endif %}
+<div class="theme-toggle" role="group" aria-label="Theme switcher">
+  <button type="button" data-theme-option="light" aria-label="Light mode">
+    <i class="fa-solid fa-sun"></i>
+  </button>
+
+  <button type="button" data-theme-option="system" aria-label="System mode">
+    <i class="fa-solid fa-desktop"></i>
+  </button>
+
+  <button type="button" data-theme-option="dark" aria-label="Dark mode">
+    <i class="fa-solid fa-moon"></i>
+  </button>
+</div>
+
 
 			</ul>
 		</nav>
 	</div>
 
 	<header class="inventea-header">
-		<!-- EVENT overall_header_headerbar_before -->	
+		{% EVENT overall_header_headerbar_before %}	
 		<div class="inventea-dashboard" role="banner">
-			<!-- EVENT overall_header_navbar_before -->
-			<!-- INCLUDE navbar_header.html -->
+			{% EVENT overall_header_navbar_before %}
+			{% INCLUDE 'navbar_header.html' %}
 
 			<div class="inventea-sitename">
-				<h1><a href="<!-- IF U_SITE_HOME -->{U_SITE_HOME}<!-- ELSE -->{U_INDEX}<!-- ENDIF -->" title="<!-- IF U_SITE_HOME -->{L_SITE_HOME}<!-- ELSE -->{L_INDEX}<!-- ENDIF -->">{SITENAME}</a></h1>
-				<span>{SITE_DESCRIPTION}</span>
+				<h1><a href="{% if U_SITE_HOME %}{{ U_SITE_HOME }}{% else %}{{ U_INDEX }}{% endif %}" title="{% if U_SITE_HOME %}{{ lang('SITE_HOME') }}{% else %}{{ lang('INDEX') }}{% endif %}">{{ SITENAME }}</a></h1>
+				<span>{{ SITE_DESCRIPTION }}</span>
 			</div>
 		</div>
-		<!-- EVENT overall_header_headerbar_after -->
+		{% EVENT overall_header_headerbar_after %}
 	</header>
 	<div class="inventea-wrapper inventea-content" role="main">
-		<!-- EVENT overall_header_page_body_before -->
+		{% EVENT overall_header_page_body_before %}
 
-		<ul id="nav-breadcrumbs" class="linklist navlinks" role="menubar">
-		<!-- IF S_INDEX -->
-			<li class="rightside inventea-time"><!-- IF S_USER_LOGGED_IN -->{LAST_VISIT_DATE}<!-- ELSE -->{CURRENT_TIME}<!-- ENDIF --></li>
-		<!-- ENDIF -->		
-		{% set MICRODATA = 'itemtype="https://schema.org/ListItem" itemprop="itemListElement" itemscope' %}
-		{% set navlink_position = 1 %}
+		{% include 'breadcrumbs.html' %}
 
-		{% EVENT overall_header_breadcrumbs_before %}
-
-		<li class="breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
-
-			{% if U_SITE_HOME %}
-				<span class="crumb" {{ MICRODATA }}><a itemprop="item" href="{{ U_SITE_HOME }}" data-navbar-reference="home"><i class="icon fa-home fa-fw" aria-hidden="true"></i><span itemprop="name">{{ L_SITE_HOME }}</span></a><meta itemprop="position" content="{{ navlink_position }}{% set navlink_position = navlink_position + 1 %}" /></span>
-			{% endif %}
-
-			{% EVENT overall_header_breadcrumb_prepend %}
-				<span class="crumb" {{ MICRODATA }}><a itemprop="item" href="{{ U_INDEX }}" accesskey="h" data-navbar-reference="index">{% if not U_SITE_HOME %}<i class="icon fa-home fa-fw"></i>{% endif %}<span itemprop="name">{{ L_INDEX }}</span></a><meta itemprop="position" content="{{ navlink_position }}{% set navlink_position = navlink_position + 1 %}" /></span>
-
-			{% for navlink in navlinks %}
-				{% set NAVLINK_NAME = navlink.BREADCRUMB_NAME | default(navlink.FORUM_NAME) %}
-				{% set NAVLINK_LINK = navlink.U_BREADCRUMB | default(navlink.U_VIEW_FORUM) %}
-
-				{% EVENT overall_header_navlink_prepend %}
-				<span class="crumb" {{ MICRODATA }}{% if navlink.MICRODATA %} {{ navlink.MICRODATA }}{% endif %}><a itemprop="item" href="{{ NAVLINK_LINK }}"><span itemprop="name">{{ NAVLINK_NAME }}</span></a><meta itemprop="position" content="{{ navlink_position }}{% set navlink_position = navlink_position + 1 %}" /></span>
-				{% EVENT overall_header_navlink_append %}
-			{% endfor %}
-
-			{% EVENT overall_header_breadcrumb_append %}
-		</li>
-		{% EVENT overall_header_breadcrumbs_after %}
-		</ul>
-
-		<!-- IF S_BOARD_DISABLED and S_USER_LOGGED_IN and (U_MCP or U_ACP) -->
+		{% if S_BOARD_DISABLED and S_USER_LOGGED_IN and (U_MCP or U_ACP) %}
 			<div id="information" class="rules">
 				<div class="inner">
-					<strong>{L_INFORMATION}{L_COLON}</strong> {L_BOARD_DISABLED}
+					<strong>{{ lang('INFORMATION') }}{{ lang('COLON') }}</strong> {{ lang('BOARD_DISABLED') }}
 				</div>
 			</div>
-		<!-- ENDIF -->
+		{% endif %}
 
-		<!-- EVENT overall_header_content_before -->
+		{% EVENT overall_header_content_before %}

@@ -25,6 +25,10 @@ table.table1 tbody {
 }
 
 /* Row (single forum) */
+ul.forums, ul.topics {
+	border-radius: 0;
+}
+
 ul.topiclist li {
 	color: var(--color-2);
 }
@@ -90,7 +94,7 @@ table.table1 tbody td {
 	border: 0;
 	vertical-align: middle;
 	line-height: 18px;
-	font-size: 12px;
+	font-size: 0.8rem;
 }
 
 ul.topiclist dt,
@@ -717,6 +721,9 @@ fieldset.polls dd.resultbar {
 	line-height: normal;
 }
 
+fieldset.polls dl.voted {
+  color: var(--text-color-1);
+}
 /* Poll bar */
 fieldset.polls dd div {
 	min-width: 8px;
@@ -820,19 +827,6 @@ blockquote blockquote blockquote {
 	background: var(--bg4-color);
 }
 
-/* Quote icon before "XYZ wrote:" */
-blockquote:before {
-	content: "\f10d";
-	display: block;
-	font-family: FontAwesome;
-	font-size: 14px;
-}
-
-blockquote cite {
-	margin-top: -22px;
-	font-size: 14px;
-}
-
 a.postlink {
 	border-bottom: 1px dotted var(--text-color-4);
 	color: var(--text-color-4);
@@ -918,28 +912,6 @@ a.postlink:hover {
 	color: var(--color-1);
 	text-decoration: none;
 }
-
-.postprofile ul.profile-icons li a:before,
-.postbody ul.profile-icons li a:before {
-	display: block;
-	font-family: FontAwesome;
-	font-size: 14px;
-}
-
-.pm-icon a:before 		{ content: "\f075"; }
-.email-icon a:before 	{ content: "\f0e0"; }
-.web-icon a:before 		{ content: "\f0ac"; }
-.msnm-icon a:before 	{ content: "\f17a"; }
-.icq-icon a:before 		{ content: "\f069"; }
-.yahoo-icon a:before 	{ content: "\f19e"; }
-.aim-icon a:before 		{ content: "\f183"; }
-.jabber-icon a:before 	{ content: "\f0eb"; }
-.edit-icon a:before 	{ content: "\f040"; }
-.delete-icon a:before 	{ content: "\f00d"; }
-.report-icon a:before 	{ content: "\f071"; }
-.warn-icon a:before 	{ content: "\f056"; }
-.info-icon a:before 	{ content: "\f129"; }
-.quote-icon a:before 	{ content: "\f10d"; }
 
 /* Who is online */
 .inventea-quickmod + h3 {
@@ -1038,10 +1010,12 @@ hr + .topic-actions {
 }
 
 .button {
+	font-size: 0.9rem;
 	border-color: var(--border-color-3);
-  background-color: var(--bg-web-color);
+	background-color: var(--bg-web-color);
 	background-image: linear-gradient(to bottom, var(--bg-web-color) 0%,var(--border-color-1) 100%);
-  box-shadow: none; 
+	box-shadow: none;
+	border-color: var(--border-button-color);
 }
 
 .button:hover, .button:focus {
@@ -1085,20 +1059,6 @@ hr + .topic-actions {
 	height: auto;
 	background: none;
 }
-
-.buttons div span:before {
-	display: block;
-	margin-right: 7px;
-	font-family: FontAwesome;
-	font-size: 14px;
-}
-
-.forwardpm-icon span:before 	{ content: "\f064"; }
-.locked-icon span:before 		{ content: "\f023"; }
-.pmreply-icon span:before 		{ content: "\f112"; }
-.reply-icon span:before 		{ content: "\f112"; }
-.newpm-icon span:before 		{ content: "\f055"; }
-.post-icon span:before 			{ content: "\f055"; }
 
 /**
  * Miscellaneous

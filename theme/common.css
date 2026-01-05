@@ -3,7 +3,7 @@
  */
 html,
 body {
-	background: var(--bg-web-color) !important;
+	background: var(--bg-web-color);
   	color: var(--text-color-2);
 }
 
@@ -271,23 +271,36 @@ ul.linklist > li {
 	margin: 0;
 }
 
-/* Items separator */
-.breadcrumbs .crumb:before,
-.breadcrumbs .crumb:first-child:before,
-ul.linklist > li:not(.breadcrumbs):before,
-#nav-footer > li.responsive-menu:after {
+/* Breadcrumb separator */
+#nav-breadcrumbs .crumb:before {
 	content: "/";
-	float: right;
-	margin: 0 10px;
-	padding: 0;
+	margin: 0;
 	color: #cacaca;
-	font-size: 14px;
-	font-weight: normal;
 }
 
-ul.linklist > li:not(.breadcrumbs):before,
-#nav-footer > li.responsive-menu:after {
-	float: left;
+#nav-breadcrumbs .crumb:first-child:before {
+	content: "";
+}
+
+/* Footer separator */
+#nav-footer > li:before {
+	content: "/";
+	margin: 0 10px;
+	color: #cacaca;
+}
+
+#nav-footer > li:first-child:before {
+	content: "";
+}
+
+/* User menu – NO separator */
+.inventea-user-menu > li:before {
+	content: none;
+}
+
+/* Remove prosilver bulletin dot from user menu */
+.inventea-user-menu.linklist.bulletin > li::before {
+	content: none;
 }
 
 .breadcrumbs:last-child .crumb:last-child:before,
@@ -479,3 +492,6 @@ fieldset dl:hover dt label {
 	max-width: 20%;
 }
 
+.dropdown-extended .dropdown-extended-item:hover {
+	background: var(--bg-web-color);
+}

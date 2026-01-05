@@ -1,44 +1,44 @@
 <nav role="navigation">
 	<ul id="nav-footer" class="nav-footer linklist" role="menubar">
 		<li class="breadcrumbs">
-			<!-- IF U_SITE_HOME -->
+			{% if U_SITE_HOME %}
 				{% apply spaceless %}
 				<span class="crumb">
-					<a href="{U_SITE_HOME}" data-navbar-reference="home">
-						<span>{L_SITE_HOME}</span>
+					<a href="{{ U_SITE_HOME }}" data-navbar-reference="home">
+						<span>{{ lang('SITE_HOME') }}</span>
 					</a>
 				</span>
 				{% endapply %}
-			<!-- ENDIF -->
-			<!-- EVENT overall_footer_breadcrumb_prepend -->
+			{% endif %}
+			{% EVENT overall_footer_breadcrumb_prepend %}
 			{% apply spaceless %}
 			<span class="crumb">
-				<a href="{U_INDEX}" data-navbar-reference="index">
-					<span>{L_INDEX}</span>
+				<a href="{{ U_INDEX }}" data-navbar-reference="index">
+					<span>{{ lang('INDEX') }}</span>
 				</a>
 			</span>
 			{% endapply %}
-			<!-- EVENT overall_footer_breadcrumb_append -->
+			{% EVENT overall_footer_breadcrumb_append %}
 		</li>
 
-		<!-- IF U_WATCH_FORUM_LINK and not S_IS_BOT -->
+		{% if U_WATCH_FORUM_LINK and not S_IS_BOT %}
 			<li data-last-responsive="true">
-				<a href="{U_WATCH_FORUM_LINK}" title="{S_WATCH_FORUM_TITLE}" data-ajax="toggle_link" data-toggle-class="icon <!-- IF S_WATCHING_FORUM -->fa-check-square-o<!-- ELSE -->fa-square-o<!-- ENDIF --> fa-fw" data-toggle-text="{S_WATCH_FORUM_TOGGLE}" data-toggle-url="{U_WATCH_FORUM_TOGGLE}">
-					<span>{S_WATCH_FORUM_TITLE}</span>
+				<a href="{{ U_WATCH_FORUM_LINK }}" title="{{ S_WATCH_FORUM_TITLE }}" data-ajax="toggle_link" data-toggle-class="icon {% if S_WATCHING_FORUM %}fa-check-square-o{% else %}fa-square-o{% endif %} fa-fw" data-toggle-text="{{ S_WATCH_FORUM_TOGGLE }}" data-toggle-url="{{ U_WATCH_FORUM_TOGGLE }}">
+					<span>{{ S_WATCH_FORUM_TITLE }}</span>
 				</a>
 			</li>
-		<!-- ENDIF -->
-		<!-- IF U_ACP --><li class="small-icon" data-last-responsive="true"><a href="{{ U_ACP }}" role="menuitem">{{ lang('ACP') }}</a></li><!-- ENDIF -->
-		<!-- IF U_CONTACT_US --><li class="small-icon" data-last-responsive="true"><a href="{U_CONTACT_US}" role="menuitem">{L_CONTACT_US}</a></li><!-- ENDIF -->
+		{% endif %}
+		{% if U_ACP %}<li class="small-icon" data-last-responsive="true"><a href="{{ U_ACP }}" role="menuitem">{{ lang('ACP') }}</a></li>{% endif %}
+		{% if U_CONTACT_US %}<li class="small-icon" data-last-responsive="true"><a href="{{ U_CONTACT_US }}" role="menuitem">{{ lang('CONTACT_US') }}</a></li>{% endif %}
 
-		<!-- EVENT overall_footer_teamlink_before -->
+		{% EVENT overall_footer_teamlink_before %}
 
-		<!-- EVENT overall_footer_teamlink_after -->
+		{% EVENT overall_footer_teamlink_after %}
 
-		<!-- IF not S_IS_BOT --><li class="small-icon"><a href="{U_DELETE_COOKIES}" data-ajax="true" data-refresh="true" role="menuitem">{L_DELETE_COOKIES}</a></li><!-- ENDIF -->
+		{% if not S_IS_BOT %}<li class="small-icon"><a href="{{ U_DELETE_COOKIES }}" data-ajax="true" data-refresh="true" role="menuitem">{{ lang('DELETE_COOKIES') }}</a></li>{% endif %}
 
-		<!-- EVENT overall_footer_timezone_before -->
-		<li>{S_TIMEZONE}</li>
-		<!-- EVENT overall_footer_timezone_after -->
+		{% EVENT overall_footer_timezone_before %}
+		<li>{{ S_TIMEZONE }}</li>
+		{% EVENT overall_footer_timezone_after %}
 	</ul>
 </nav>

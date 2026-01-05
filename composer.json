@@ -1,0 +1,27 @@
+{
+    "name": "phpbb/we_universal",
+    "description": "we_universal style",
+    "type": "phpbb-style",
+    "version": "3.0.0-a1",
+    "homepage": "https://nextgen.gt",
+    "license": "GPL-2.0-only",
+    "authors": [
+        {
+            "name": "nextgen",
+            "email": "contact@nextgen.gt",
+            "homepage": "https://nextgen.gt"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/nextgen-solutions-gt/we_universal/issues",
+        "forum": "",
+        "docs": "",
+        "irc": "",
+        "chat": ""
+    },
+    "extra": {
+        "display-name": "we_universal",
+        "phpbb-version": "4.0.0-a1",
+        "parent-style": "prosilver"
+    }
+}

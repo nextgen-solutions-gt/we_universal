@@ -4,99 +4,106 @@
         <div class="pointer"><div class="pointer-inner"></div></div>
         	<ul class="dropdown-contents" role="menubar">
 				<li>
-					<a href="{U_INDEX}" role="menuitem">
-						<i class="icon fa fa-fw <!-- IF U_SITE_HOME -->fa-globe<!-- ELSE -->fa-home<!-- ENDIF -->" aria-hidden="true"></i><span>{L_INDEX}</span>
+					<a href="{{ U_INDEX }}" role="menuitem">
+						<span>{{ Icon('font', 'home', lang('INDEX'), false) }}</span>
 					</a>
 				</li>		
-				<!-- EVENT overall_header_navigation_prepend -->
+				{% EVENT overall_header_navigation_prepend %}
 
-				<li <!-- IF not S_USER_LOGGED_IN -->data-skip-responsive="true"<!-- ELSE -->data-last-responsive="true"<!-- ENDIF -->>
-					<a href="{U_FAQ}" rel="help" title="{L_FAQ_EXPLAIN}" role="menuitem">
-						<i class="icon fa-question-circle fa-fw" aria-hidden="true"></i><span>{L_FAQ}</span>
+				<li {% if not S_USER_LOGGED_IN %}data-skip-responsive="true"{% else %}data-last-responsive="true"{% endif %}>
+					<a href="{{ U_FAQ }}" rel="help" title="{{ lang('FAQ_EXPLAIN') }}" role="menuitem">
+						<span title="{{ lang('FAQ_EXPLAIN') }}">{{ Icon('font', 'question-circle', lang('FAQ'), false) }}</span>
 					</a>
 				</li>
-				<!-- EVENT navbar_header_quick_links_before -->
+				{% EVENT navbar_header_quick_links_before %}
 
-				<!-- IF S_DISPLAY_SEARCH -->
+				{% if S_DISPLAY_SEARCH %}
 				<li>
-					<a href="{U_SEARCH}" role="menuitem">
-						<i class="icon fa-search fa-fw" aria-hidden="true"></i><span>{L_SEARCH}</span>
+					<a href="{{ U_SEARCH }}" role="menuitem">
+						<span>{{ Icon('font', 'search', lang('SEARCH'), false) }}</span>
 					</a>
 				</li>
 							
-				<!-- IF S_REGISTERED_USER -->
+				{% if S_REGISTERED_USER %}
 				<li>
-					<a href="{U_SEARCH_SELF}" role="menuitem">
-						<i class="icon fa-file-o fa-fw icon-gray" aria-hidden="true"></i><span>{L_SEARCH_SELF}</span>
+					<a href="{{ U_SEARCH_SELF }}" role="menuitem">
+						<span>{{ Icon('font', 'file', lang('SEARCH_SELF'), false, 'far icon icon-gray') }}</span>
 					</a>
 				</li>
-				<!-- ENDIF -->
+				{% endif %}
 							
-				<!-- IF S_USER_LOGGED_IN -->
+				{% if S_USER_LOGGED_IN %}
 				<li>
-					<a href="{U_SEARCH_NEW}" role="menuitem">
-						<i class="icon fa-file-o fa-fw icon-red" aria-hidden="true"></i><span>{L_SEARCH_NEW}</span>
+					<a href="{{ U_SEARCH_NEW }}" role="menuitem">
+						<span>{{ Icon('font', 'file', lang('SEARCH_NEW'), false, 'far icon icon-red') }}</span>
 					</a>
 				</li>
-				<!-- ENDIF -->
+				{% endif %}
 							
-				<!-- IF S_LOAD_UNREADS -->
+				{% if S_LOAD_UNREADS %}
 				<li>
-					<a href="{U_SEARCH_UNREAD}" role="menuitem">
-						<i class="icon fa-file-o fa-fw icon-red" aria-hidden="true"></i><span>{L_SEARCH_UNREAD}</span>
+					<a href="{{ U_SEARCH_UNREAD }}" role="menuitem">
+						<span>{{ Icon('font', 'file', lang('SEARCH_UNREAD'), false, 'far icon icon-red') }}</span>
 					</a>
 				</li>
-				<!-- ENDIF -->	
+				{% endif %}	
 						
 				<li>
-					<a href="{U_SEARCH_UNANSWERED}" role="menuitem">
-						<i class="icon fa-file-o fa-fw icon-gray" aria-hidden="true"></i><span>{L_SEARCH_UNANSWERED}</span>
+					<a href="{{ U_SEARCH_UNANSWERED }}" role="menuitem">
+						<span>{{ Icon('font', 'file', lang('SEARCH_UNANSWERED'), false, 'far icon icon-gray') }}</span>
 					</a>
 				</li>
 				<li>
-					<a href="{U_SEARCH_ACTIVE_TOPICS}" role="menuitem">
-						<i class="icon fa-file-o fa-fw icon-blue" aria-hidden="true"></i><span>{L_SEARCH_ACTIVE_TOPICS}</span>
+					<a href="{{ U_SEARCH_ACTIVE_TOPICS }}" role="menuitem">
+						<span>{{ Icon('font', 'file-lines', lang('SEARCH_ACTIVE_TOPICS'), false, 'far icon icon-blue') }}</span>
 					</a>
 				</li>
+				{% if U_MARK_FORUMS %}
+				<li>
+					<a href="{{ U_MARK_FORUMS }}" role="menuitem" accesskey="m" data-ajax="mark_forums_read">
+						<span>{{ Icon('font', 'book-open-reader', lang('MARK_FORUMS_READ'), false) }}</span>
+					</a>
+				</li>
+				{% endif %}				
 				<li class="separator"></li>
 	
-				<!-- ENDIF -->
+				{% endif %}
 
-				<!-- EVENT navbar_header_quick_links_after -->
+				{% EVENT navbar_header_quick_links_after %}
 
-				<!-- IF not S_IS_BOT -->
-				<!-- IF S_DISPLAY_MEMBERLIST -->
+				{% if not S_IS_BOT %}
+				{% if S_DISPLAY_MEMBERLIST %}
 				<li>
-					<a href="{U_MEMBERLIST}" role="menuitem">
-						<i class="icon fa-group fa-fw" aria-hidden="true"></i><span>{L_MEMBERLIST}</span>
+					<a href="{{ U_MEMBERLIST }}" role="menuitem">
+						<span>{{ Icon('font', 'users', lang('MEMBERLIST'), false) }}</span>
 					</a>
 				</li>
-				<!-- ENDIF -->
-				<!-- IF U_TEAM -->
+				{% endif %}
+				{% if U_TEAM %}
 				<li>
-					<a href="{U_TEAM}" role="menuitem">
-						<i class="icon fa-shield fa-fw" aria-hidden="true"></i><span>{L_THE_TEAM}</span>
+					<a href="{{ U_TEAM }}" role="menuitem">
+						<span>{{ Icon('font', 'shield-halved', lang('THE_TEAM'), false) }}</span>
 					</a>
 				</li>
-				<!-- ENDIF -->
-				<!-- ENDIF -->
+				{% endif %}
+				{% endif %}
 
-				<!-- IF U_ACP -->
+				{% if U_ACP %}
 				<li data-last-responsive="true">
-					<a href="{U_ACP}" title="{L_ACP}" role="menuitem">
-						<i class="icon fa-cogs fa-fw" aria-hidden="true"></i><span>{L_ACP_SHORT}</span>
+					<a href="{{ U_ACP }}" title="{{ lang('ACP') }}" role="menuitem">
+						<span>{{ Icon('font', 'cogs', lang('ACP_SHORT'), false) }}</span>
 					</a>
 				</li>
-				<!-- ENDIF -->
+				{% endif %}
 
-				<!-- IF U_MCP -->
+				{% if U_MCP %}
 				<li data-last-responsive="true">
-					<a href="{U_MCP}" title="{L_MCP}" role="menuitem">
-						<i class="icon fa-gavel fa-fw" aria-hidden="true"></i><span>{L_MCP_SHORT}</span>
+					<a href="{{ U_MCP }}" title="{{ lang('MCP') }}" role="menuitem">
+						<span>{{ Icon('font', 'gavel', lang('MCP_SHORT'), false) }}</span>
 					</a>
 				</li>
-				<!-- ENDIF -->
-				<!-- EVENT overall_header_navigation_append -->
+				{% endif %}
+				{% EVENT overall_header_navigation_append %}
 			</ul>
     </div>
 </div>

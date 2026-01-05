@@ -3,9 +3,8 @@
 :root {
   --border-radius-big: max(0px, min(4px, calc((100vw - 4px - 100%) * 9999)));
   --border-radius-small: 2px;
-  --inventea-online-bg: #0ead8e;
-  --inventea-online-border: #0c9076;
   --inventea-text-color: #FFFFFF;
+  --darkmode-icon: #e60a4c;
 }
 
 html,
@@ -42,6 +41,8 @@ html,
   --border-color-2: #525252;
   --border-color-3: #CCCCCC;
   --button-bg: #dfdfdf;
+  --forumicon-bg: #515151;
+  --border-button-color: #bdbdbd;
   --reported-bg: #eed9d9;
   --bg-rule: #f2dede;
   --color-warning: #ffe799;
@@ -84,6 +85,8 @@ html,
     --border-color-2: #6A6A6A;
     --border-color-3: #484848;
     --button-bg: #222222;
+	--forumicon-bg: #686868;
+	--border-button-color: #222222;
     --reported-bg: #60323E;
     --bg-rule: #2D181D;
     --color-warning: #ffe799;
@@ -127,6 +130,8 @@ html,
   --border-color-3: #484848;
   --reported-bg: #60323E;
   --button-bg: #222222;
+  --forumicon-bg: #686868;  
+  --border-button-color: #222222;
   --bg-rule: #2D181D;
   --color-warning: #ffe799;
   --color-error: #c90842; 
@@ -144,8 +149,15 @@ html,
   ---------------------------------------------------------------
 */
 
+li.row:last-child {
+  border-bottom: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  margin-bottom: 0;
+}
+
 ul.topiclist li.row dd {
-  padding: 4px 0 0 10px;
+  padding: 5px 0 5px 10px;
 }
 
 .footer-row {
@@ -241,180 +253,107 @@ ul.topiclist li.row dd {
   border-color: var(--border-color-3);
 }
 
-.row-item[class*="_read"],
-.row-item[class*="_unread"],
-.forum_link,
-.topic_moved {
-  background-image: none;
-}
-
-.row-item[class*="_read"]:before,
-.row-item[class*="_unread"]:before,
-.forum_link:before,
-.topic_moved:before,
-.row-item[class*="_mine"]:after {
-  font-family: 'FontAwesome';
-  font-variant: normal;
-  text-rendering: auto;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.row-item[class*="_read"]:before,
-.row-item[class*="_unread"]:before,
-.forum_link:before,
-.topic_moved:before {
-  left: 12px;
-  line-height: 28px;
-  width: 28px;
-  height: 28px;
-  font-size: 25px;
-  text-align: center;
-  border-radius: var(--border-radius-small);
-}
-
-.row-item[class*="_mine"]:after {
-  content: "\f005";
-  font-size: 8px;
-  left: 38px;
-  top: 14px;
-}
-
-.rtl .row-item[class*="_mine"]:after {
-  left: auto;
-  right: 4px;
-}
-
-.row-item[class*="global_"]:before,
-.row-item[class*="announce_"]:before {
-  content: "\f0a1";
-}
-
-.row-item[class*="sticky_"]:before {
-  content: "\f08d";
-}
-
-.row-item[class*="forum_"]:before {
-  content: "\f086";
-}
-
-.row-item[class*="topic_"]:before,
-.row-item[class*="pm_"]:before {
-  content: "\f075";
-}
-
-.row-item[class*="_locked"]:before {
-  content: "\f023";
-}
-
-.row-item.forum_link:before {
-  content: "\f0c1";
-}
-
-.row-item.topic_moved:before {
-  content: "\f064";
-}
-
-.icon.icon-red {
-  font-weight: bold;
-}
-
-.unread:hover {
-  text-decoration: none;
-}
-
-.dropdown-contents .fa-file-o:before {
-  content: "\f0e5";
-}
-
-.lastpost .fa-external-link-square:before {
-  content: "\f0e5";
-}
-
-.icon-mark .fa-check-circle:before {
-  content: "\f046";
-}
-
-.row-item .fa-exclamation:before {
-  content: "\f06a";
-}
-
-.row-item .fa-file-o:before {
-  content: "\f114";
-}
-
-.row-item .fa-question:before {
-  content: "\f059";
-}
-
-.row-item .fa-recycle:before {
-  content: "\f057";
-}
-
-/* Unread States */
-.global_unread:before, 
-.global_unread_mine:before, 
-.global_unread_locked:before, 
-.global_unread_locked_mine:before, 
-.announce_unread:before, 
-.announce_unread_mine:before, 
-.announce_unread_locked:before, 
-.announce_unread_locked_mine:before, 
-.forum_unread:before, 
-.forum_unread_locked:before, 
-.forum_unread_subforum:before, 
-.sticky_unread:before, 
-.sticky_unread_mine:before, 
-.sticky_unread_locked:before, 
-.sticky_unread_locked_mine:before, 
-.pm_unread:before, 
-.topic_unread:before, 
-.topic_unread_mine:before, 
-.topic_unread_hot:before, 
-.topic_unread_hot_mine:before, 
-.topic_unread_locked:before, 
-.topic_unread_locked_mine:before {
-  color: var(--links-color-hover-focus);
-}
-
 .jumpbox-forum-link {
-  background-color: var(--bg3-color);
+	background-color: var(--bg3-color);
 }
 
 .dropdown {
-  left: -0.7rem;
-  top: 1rem;
+	left: -0.7rem;
+	top: 1rem;
 }
 
 .row .list-inner {
   padding: 4px 5px;
 }
 
-.switch-theme {
-  position: relative;
+.o-icon-font {
+	font-size: 1rem;
 }
 
-.theme-tooltip {
-  position: absolute;
-  bottom: 125%;
-  left: 50%;
-  transform: translateX(-50%);
-  white-space: nowrap;
+.row-item-link {
+	background-color: var(--forumicon-bg);
+}
 
-  background: var(--bg2-color);
+.icon.icon-blue, a:hover .icon.icon-blue, .read, .c-unapproved-icon {
+	color: var(--links-color);
+}
+
+.to-top-button {
+	background: var(--button-bg);
+}
+
+.to-top-button a {
+	color: var(--links-color);
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+
+  padding: 4px;
+  border-radius: 999px;
+
+  background: var(--bg-web-color);
+  border: 1px solid var(--border-color-1);
+
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.04);
+  transform: translateY(-10px);
+}
+
+.theme-toggle button {
+  width: 30px;
+  height: 30px;
+
+  border: none;
+  background: transparent;
+  border-radius: 999px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
   color: var(--text-color-1);
-  padding: 4px 8px;
-  border-radius: 4px;
   font-size: 12px;
 
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.15s ease;
-  z-index: 1000;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.15s ease;
 }
 
-.switch-theme:hover .theme-tooltip,
-.switch-theme:focus-visible .theme-tooltip {
-  opacity: 1;
+.theme-toggle button:hover {
+  background: rgba(0,0,0,.05);
+  color: var(--links-color);
+}
+
+[data-theme="dark"] .theme-toggle button:hover {
+  background: rgba(255,255,255,.08);
+}
+
+/* Focus accesible */
+.theme-toggle button:focus-visible {
+  outline: 2px solid #CCC;
+  outline-offset: 2px;
+}
+
+/* Estado activo SIN JS (evita parpadeo) */
+html[data-theme-selected="light"]  .theme-toggle button[data-theme-option="light"],
+html[data-theme-selected="dark"]   .theme-toggle button[data-theme-option="dark"],
+html[data-theme-selected="system"] .theme-toggle button[data-theme-option="system"] {
+  background: var(--bg4-color);
+  color: var(--darkmode-icon);
+  box-shadow: 0 1px 3px rgba(0,0,0,.15);
+}
+
+.alert_close .icon::before, .alert_close .o-icon::before {
+  background: var(--bg-web-color);
+}
+.notification-time {
+  color: var(--text-color-1);
+}
+
+a.unread {
+  color: var(--color-error);
 }
