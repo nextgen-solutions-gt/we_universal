@@ -1,7 +1,7 @@
-![we_universal](https://nextgen.gt/images/we_universal_new.png)
+![we_universal](https://nextgen.gt/assets/images/we_universal.jpg)
 
 
-phpBB style: [we_universal](https://nextgen.gt/forum/viewtopic.php?t=13)
+phpBB style: [we_universal](https://nextgen.gt/designs/we-universal/)
 ==========================================================================
 
 we_universal is a modern, clean style for **phpBB 3.0**, **phpBB 3.1**, **phpBB 3.2** and **phpBB 3.3**.

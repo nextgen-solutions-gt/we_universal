@@ -357,3 +357,7 @@ html[data-theme-selected="system"] .theme-toggle button[data-theme-option="syste
 a.unread {
   color: var(--color-error);
 }
+
+.header-profile {
+  text-shadow: none;
+}

@@ -124,7 +124,9 @@
 						{% EVENT navbar_header_username_prepend %}
 						<div class="header-profile dropdown-container">
 							<a href="{{ U_PROFILE }}" class="header-avatar dropdown-trigger">
-							{% if CURRENT_USER_AVATAR_HTML %}{{ CURRENT_USER_AVATAR_HTML }}{% else %}<img src="{T_THEME_PATH}/images/no_avatar.gif" alt="" />{% endif %} {{ CURRENT_USERNAME_SIMPLE }}
+							{% if CURRENT_USER_AVATAR %}{% include 'avatar.html' with {'avatar_data': CURRENT_USER_AVATAR} only %}{% else %}<img src="{T_THEME_PATH}/images/no_avatar.gif" alt="" />{% endif %}
+						
+							{{ CURRENT_USERNAME_SIMPLE }}
 							{{ Icon('font', 'caret-down', '', true, '', {'style': 'color: #' ~ CURRENT_USER_GROUP_COLOR}) }}
 						</a>
 						<div class="dropdown">

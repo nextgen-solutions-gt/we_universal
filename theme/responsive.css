@@ -271,6 +271,10 @@ input.tiny {
 .avatar-rank-container {
 	max-width: 100%;
 }
+
+.post-buttons-responsive-menu .dropdown-contents .button {
+	color: var(--links-color);
+}
 }
 
 .responsive-tab .responsive-tab-link:before {
